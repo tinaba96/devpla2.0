@@ -13,6 +13,15 @@ Devpla2.0 has been developed by using Vue.js for Fronend and Laravel for Backend
 
 1. Set your own `.env` file 
 
+1. Build the images
+    ```
+    docker compose build
+    ```
+
+1. Start the containers
+    ```
+    docker compose up -d
+    ```
 
 1. Login to Docker
     ```
