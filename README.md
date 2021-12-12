@@ -24,7 +24,7 @@ docker compose exec app bash
 npm install
 ```
 
-if needed
+  - if needed
 ```
 npm install -D vue
 npm install -D vue-router
