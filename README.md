@@ -28,13 +28,14 @@ Devpla2.0 has been developed by using Vue.js for Fronend and Laravel for Backend
     docker compose exec app bash
     ```
 
+    - Install Laravel, if needed
+
 1. Install npm
     ```
     npm install
     ```
 
-    - if needed
-
+    - Install vuejs, if needed
     ```
     npm install -D vue
     npm install -D vue-router
