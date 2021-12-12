@@ -6,7 +6,7 @@ Devpla2.0 has been developed by using Vue.js for Fronend and Laravel for Backend
 
 ## Instructions
 
-#### clone this repository
+- clone this repository
 ```
 git clone https://github.com/tinaba96/devpla2.0.git
 ```
@@ -14,23 +14,23 @@ git clone https://github.com/tinaba96/devpla2.0.git
 - Set your own .env file 
 
 
-#### Login to Docker
+- Login to Docker
 ```
 docker compose exec app bash
 ```
 
-#### install npm
+- install npm
 ```
 npm install
 ```
 
-##### if needed
+if needed
 ```
 npm install -D vue
 npm install -D vue-router
 ```
 
-#### Run
+- Run
 ```
 npm run watch
 ```
