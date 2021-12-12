@@ -15,7 +15,7 @@ Devpla2.0 has been developed by using Vue.js for Fronend and Laravel for Backend
 
 
 1. Login to Docker
-    ````
+    ```
     docker compose exec app bash
     ```
 
