@@ -2101,26 +2101,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_Test_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pages/Test.vue */ "./resources/js/pages/Test.vue");
 /* harmony import */ var _pages_Login_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages/Login.vue */ "./resources/js/pages/Login.vue");
 
- // ページコンポーネントをインポートする
 
 
- // VueRouterプラグインを使用する
-// これによって<RouterView />コンポーネントなどを使うことができる
 
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]); // パスとコンポーネントのマッピング
-
+vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]);
 var routes = [{
   path: '/',
   component: _pages_Test_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
 }, {
   path: '/login',
   component: _pages_Login_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
-}]; // VueRouterインスタンスを作成する
-
+}];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]({
   routes: routes
-}); // app.jsでインポートするため
-
+});
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
 
 /***/ }),
@@ -19738,9 +19732,82 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Login Page")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("h1", [_vm._v("Login Page")]),
+      _vm._v(" "),
+      _c("h3", [_vm._v("キャンセル")]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow",
+        },
+        [
+          _c(
+            "a",
+            {
+              staticClass: "flex flex-wrap no-underline hover:no-underline",
+              attrs: { href: "#" },
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "w-full font-bold text-xl text-gray-800 px-6" },
+                [
+                  _vm._v(
+                    "\n                開発する上で知り合ったメンバーを、自社に引き抜きしてもよいですか？\n              "
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-gray-800 text-base px-6 mb-5" }, [
+                _vm._v(
+                  "\n                当サイトでは、勧誘などの行為を禁止しております。詳しくは、ページ下部の注意事項のリンクをご覧ください。\n              "
+                ),
+              ]),
+            ]
+          ),
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6",
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "w-full pt-6 text-4xl font-bold text-center" },
+            [_vm._v("\n                月額100円\n              ")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "flex items-center justify-center" }, [
+            _c("a", { attrs: { href: "/register" } }, [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out",
+                },
+                [_vm._v("\n                    登録する\n                  ")]
+              ),
+            ]),
+          ]),
+        ]
+      ),
+    ])
+  },
+]
 render._withStripped = true
 
 
@@ -35213,21 +35280,14 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
- // new Vue({
-//   el: '#app',
-//   template: '<h1>Congratulations!!</h1>'
-// })
 
 new vue__WEBPACK_IMPORTED_MODULE_2__["default"]({
   el: '#app',
   router: _router__WEBPACK_IMPORTED_MODULE_0__["default"],
-  // ルーティングの定義を読み込む
   components: {
     App: _App_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  // ルートコンポーネントの使用を宣言する
-  template: '<App />' // ルートコンポーネントを描画する
-
+  template: '<App />'
 });
 })();
 
