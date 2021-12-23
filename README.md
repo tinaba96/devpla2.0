@@ -14,7 +14,7 @@ Devpla2.0 has been developed by using Vue.js for Fronend and Laravel for Backend
 
 
 【docker 起動するための準備を行う】
-1. Set your own `.env` file 
+1. Set your own `.env` file （dockerの.enファイルに環境変数を入れる）
 
 1. Build the images
     ```
