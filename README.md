@@ -1,4 +1,4 @@
-# DevPla2.0
+# DevPla2.0(2021年12月23日　追記)
 
 This app is a Platform where people can gather web developers for their developments.
 We call it as Devpla2.0 and this is an updated version of `Devpla` where Laravel is used for Frontend and Backend.
@@ -29,6 +29,20 @@ Devpla2.0 has been developed by using Vue.js for Fronend and Laravel for Backend
     ```
 
     - Install Laravel, if needed
+
+1. composer をインストールする（追記）
+    
+    コマンド：composer install
+
+1. laravelプロジェクト配下に.envが無い場合、以下のコマンドで.envファイル作成
+    
+    コマンド：cp .env.example .env
+
+1. ローカルホストにアクセスした際に、No application encryption key has been specified と表示された場合...
+　  appコンテナに入り、下記のコマンド入力
+
+    コマンド：php artisan key:generate
+
 
 1. Install npm
     ```
