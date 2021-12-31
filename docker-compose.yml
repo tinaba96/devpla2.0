@@ -2,20 +2,21 @@ version: '3.8'
 
 services:
   app:
+    env_file: ./.env
     build:
       context: .
       dockerfile: ./docker/php/Dockerfile
     volumes:
       - ./src/:/var/www/html
     environment:
-      - DB_CONNECTION=mysql
-      - DB_HOST=db
-      - DB_PORT=3306
-      - DB_DATABASE=${DB_NAME}
-      - DB_USERNAME=${DB_USER}
+      - DB_HOST=mysql
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
+      - DB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
 
   nginx:
+    env_file: ./.env
     build:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
@@ -27,17 +28,17 @@ services:
       - ./src/:/var/www/html
 
   mysql:
+    env_file: ./.env
     build:
       context: .
       dockerfile: ./docker/mysql/Dockerfile
     ports:
       - ${DB_PORT}:3306
     environment:
-      - MYSQL_DATABASE=${DB_NAME}
-      - MYSQL_USER=${DB_USER}
-      - MYSQL_PASSWORD=${DB_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
       - TZ='Asia/Tokyo'
     volumes:
       - ./db/data:/var/lib/mysql
-

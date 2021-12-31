@@ -37,7 +37,7 @@ Devpla2.0 has been developed by using Vue.js for Fronend and Laravel for Backend
 1. composer をインストールする（追記）
     
     コマンド：composer install
-
+    参考URL http://vdeep.net/laravel-git-clone
 
 【動作確認時、ローカルサーバーにアクセスしたが　Http500が表示されたときの対応】
 1. laravelプロジェクト配下に.envが無い場合、以下のコマンドで.envファイル作成
