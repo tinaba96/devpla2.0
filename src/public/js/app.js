@@ -20584,24 +20584,20 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "app" },
-    [
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "app" }, [
       _c("h1", [_vm._v("Congratulations!!!")]),
       _vm._v(" "),
       _c("h3", [_vm._v("Your environment setup has been finished!")]),
-      _vm._v(" "),
-      _c("v-btn", { attrs: { dark: "" } }, [_vm._v("Button")]),
-      _vm._v(" "),
-      _c("v-btn", { attrs: { color: "#F0E68C", fab: "" } }, [_vm._v("tile")]),
-      _vm._v(" "),
-      _c("v-btn", { attrs: { dark: "", rounded: "" } }, [_vm._v("rounded")]),
-    ],
-    1
-  )
-}
-var staticRenderFns = []
+    ])
+  },
+]
 render._withStripped = true
 
 
