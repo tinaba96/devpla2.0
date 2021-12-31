@@ -16,7 +16,7 @@ const routes = [
 		component: Test
 	},
 	{
-		// リクエストを/にしたとき
+		// リクエストを/testにしたとき(test用のURL)
 		path: '/test',
 		component: Test2
 	},

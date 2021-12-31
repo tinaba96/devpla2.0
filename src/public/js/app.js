@@ -2259,7 +2259,7 @@ var routes = [{
   path: '/',
   component: _pages_Test_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
 }, {
-  // リクエストを/にしたとき
+  // リクエストを/testにしたとき(test用のURL)
   path: '/test',
   component: _pages_Test2_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
 }, {
