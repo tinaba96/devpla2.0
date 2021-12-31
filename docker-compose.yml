@@ -28,7 +28,6 @@ services:
       - ./src/:/var/www/html
 
   mysql:
-    env_file: ./.env
     build:
       context: .
       dockerfile: ./docker/mysql/Dockerfile
