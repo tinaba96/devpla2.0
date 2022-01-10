@@ -28,7 +28,8 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes
-})
-
+	mode: 'history', // ★ 追加
+	routes
+  })
+  
 export default router
