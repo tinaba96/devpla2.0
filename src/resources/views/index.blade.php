@@ -18,7 +18,7 @@
 </head>
 <body>
 <div id="app">
-    {{-- <router-view /> --}}
+    hello{{-- <router-view /> --}}
 </div>
 </body>
 </html>

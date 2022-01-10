@@ -1,5 +1,4 @@
 /*========== vue.js ルート機能 =========*/
-
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
