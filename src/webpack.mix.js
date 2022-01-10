@@ -1,5 +1,4 @@
 const mix = require('laravel-mix');
-const webpack = require('./webpack.config');
 
 /*
  |--------------------------------------------------------------------------
@@ -17,7 +16,6 @@ const webpack = require('./webpack.config');
 //         //
 //     ]);
 mix
-  .webpackConfig(Object.assign(webpack))
   .js('resources/js/app.js', 'public/js')
   .css('resources/css/app.css', 'public/css')
   .version()
