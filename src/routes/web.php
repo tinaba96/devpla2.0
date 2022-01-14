@@ -21,11 +21,11 @@ use Illuminate\Support\Facades\Route;
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 
-// require __DIR__.'/auth.php';
 
+// require __DIR__.'/auth.php';
 
 Route::get('{any}', function () {
     return view('index');
-})->where('any', '.*')->middleware(['auth'])->name('dashboard');;
+})->where('any', '.*');
 
-require __DIR__.'/auth.php';
+

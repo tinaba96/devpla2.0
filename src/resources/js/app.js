@@ -1,12 +1,14 @@
-// require('./bootstrap')
+require('./bootstrap')
 import './bootstrap'
 
 import Alpine from 'alpinejs'
+window.Alpine = Alpine;
+Alpine.start();
 
 // ルーティングの定義をインポートする
 import router from './router'
 // ルートコンポーネントをインポートする
-import App from './App'
+import App from './App.vue'
 
 import Vue from 'vue'
 import Vuetify from 'vuetify'
@@ -17,21 +19,18 @@ Vue.use(Vuetify);
 Vue.config.productionTip = false;
 window.Vue = require('vue').default;
 
-import store from './store' // ★追加
+import store from './store'
 
 // import vuetify from "../../plugins/vuetify.js"
 
-window.Alpine = Alpine;
 
-Alpine.start();
 
 new Vue({
     el: '#app',
-    router, // ルーティングの定義を読み込む
     components: { App }, // ルートコンポーネントの使用を宣言する
     template: '<App />', // ルートコンポーネントを描画する
     //vuetify: new Vuetify()
     router: router,
     vuetify: vuetify,
-    store // ★追加
+    store
 })

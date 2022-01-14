@@ -4,7 +4,7 @@
  * @returns {String} キーに対応する値
  */
  export function getCookieValue (searchKey) {
-  if (typeof searchKey === 'undefined') {
+  if (typeof searchKey === 'underfined') {
     return ''
   }
 
