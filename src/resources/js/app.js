@@ -1,11 +1,12 @@
-require('./bootstrap')
+// require('./bootstrap')
+import './bootstrap'
 
 import Alpine from 'alpinejs'
 
 // ルーティングの定義をインポートする
 import router from './router'
 // ルートコンポーネントをインポートする
-import App from './App.vue'
+import App from './App'
 
 import Vue from 'vue'
 import Vuetify from 'vuetify'
@@ -15,6 +16,8 @@ import vuetify from '../../plugins/vuetify' // path to vuetify export
 Vue.use(Vuetify);
 Vue.config.productionTip = false;
 window.Vue = require('vue').default;
+
+import store from './store' // ★追加
 
 // import vuetify from "../../plugins/vuetify.js"
 
@@ -30,4 +33,5 @@ new Vue({
     //vuetify: new Vuetify()
     router: router,
     vuetify: vuetify,
+    store // ★追加
 })

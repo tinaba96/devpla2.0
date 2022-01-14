@@ -19,12 +19,12 @@ mix
     open: false // ブラウザを自動で開かない
   }
   .js('resources/js/app.js', 'public/js')
-//   .css('resources/css/app.css', 'public/css', [
-//     require('postcss-import'),
-//     require('tailwindcss'),
-//     require('autoprefixer'),
-// ])
-  .css('resources/css/app.css', 'public/css')
+  .css('resources/css/app.css', 'public/css', [
+    require('postcss-import'),
+    require('tailwindcss'),
+    require('autoprefixer'),
+])
+  // .css('resources/css/app.css', 'public/css')
   .version()
   .vue()
 )
