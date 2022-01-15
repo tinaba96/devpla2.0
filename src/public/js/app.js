@@ -6114,7 +6114,7 @@ var actions = {
             case 0:
               context.commit('setApiStatus', null);
               _context3.next = 3;
-              return axios.post('/api/logout');
+              return axios.post('/auth/logout');
 
             case 3:
               response = _context3.sent;
