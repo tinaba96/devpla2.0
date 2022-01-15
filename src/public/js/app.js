@@ -5468,8 +5468,6 @@ module.exports = {
 //
 //
 //
-//
-//
 
 /***/ }),
 
@@ -8355,21 +8353,19 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("v-app", [
-    _c(
-      "div",
-      [
-        _c("header", [_c("Navbar")], 1),
-        _vm._v(" "),
-        _c("main", [
-          _c("div", { staticClass: "container" }, [_c("RouterView")], 1),
-        ]),
-        _vm._v(" "),
-        _c("Footer"),
-      ],
-      1
-    ),
-  ])
+  return _c(
+    "div",
+    [
+      _c("header", [_c("Navbar")], 1),
+      _vm._v(" "),
+      _c("main", [
+        _c("div", { staticClass: "container" }, [_c("RouterView")], 1),
+      ]),
+      _vm._v(" "),
+      _c("Footer"),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
