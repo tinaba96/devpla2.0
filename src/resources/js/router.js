@@ -5,30 +5,47 @@ import VueRouter from 'vue-router'
 import Test from './pages/Test.vue'
 import Test2 from './pages/Test2.vue'
 import Login from './pages/Login.vue'
+import SystemError from './pages/errors/System.vue'
+import store from './store'
+
 
 Vue.use(VueRouter)
 
+// パスとコンポーネントのマッピング
 const routes = [
 	{
 		// リクエストを/にしたとき
-		path: '/',
+		path: '/test',
 		component: Test
 	},
 	{
 		// リクエストを/testにしたとき(test用のURL)
-		path: '/test',
+		path: '/test2',
 		component: Test2
 	},
 	{
-		// リクエストを/loginにしたとき
-		path: '/login',
-		component: Login
+	  path: '/login',
+	  component: Login,
+	  beforeEnter (to, from, next) {
+		if (store.getters['auth/check']) {
+		  next('/')
+		} else {
+		  next()
+		}
+	  }
+	},
+	{
+		path: '/500',
+		component: SystemError
 	}
-]
-
-const router = new VueRouter({
-	mode: 'history', // ★ 追加
+  ]
+  
+  // VueRouterインスタンスを作成する
+  const router = new VueRouter({
+	mode: 'history',
 	routes
   })
   
-export default router
+  // VueRouterインスタンスをエクスポートする
+  // app.jsでインポートするため
+  export default router

@@ -18,7 +18,7 @@
 </head>
 <body>
 <div id="app">
-    hello{{-- <router-view /> --}}
+   index.blade.phpが表示中
 </div>
 </body>
 </html>
