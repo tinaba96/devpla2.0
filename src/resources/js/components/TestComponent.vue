@@ -2,13 +2,13 @@
 <div>
 
 <header>
-  <b-navbar type="dark" variant="primary">
-    <b-navbar-brand id="brand" class="mr-auto">Test</b-navbar-brand>
-      <b-navbar-nav>
-        <b-nav-item to="/user/account">Account</b-nav-item>
-        <b-nav-item to="/user/login">Login/Logout</b-nav-item>
-      </b-navbar-nav>
-  </b-navbar>
+  <v-navbar type="dark" variant="primary">
+    <v-navbar-brand id="brand" class="mr-auto">Test</v-navbar-brand>
+      <v-navbar-nav>
+        <v-nav-item to="/user/account">Account</v-nav-item>
+        <v-nav-item to="/user/login">Login/Logout</v-nav-item>
+      </v-navbar-nav>
+  </v-navbar>
 </header>
 
 <main>

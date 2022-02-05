@@ -1,22 +1,22 @@
 <template>
 <div class="mx-auto p-2" style="max-width: 600px;">
 
-  <b-card
+  <v-card
     no-body
     header="ユーザ情報"
     header-bg-variant="primary"
     header-text-variant="white"
   >
-    <b-card-text v-if="auth" class="p-2">
+    <v-card-text v-if="auth" class="p-2">
       <label>Name</label>
-      <b-list-group-item class="mb-2">{{user.name}}</b-list-group-item>
+      <v-list-group-item class="mv-2">{{user.name}}</v-list-group-item>
       <label>Email</label>
-      <b-list-group-item>{{user.email}}</b-list-group-item>
-    </b-card-text>
-    <b-card-text v-else class="p-2 text-danger">
+      <v-list-group-item>{{user.email}}</v-list-group-item>
+    </v-card-text>
+    <v-card-text v-else class="p-2 text-danger">
       {{error.status}} {{error.statusText}}
-    </b-card-text>
-  </b-card>
+    </v-card-text>
+  </v-card>
 
 </div>
 </template>

@@ -1,36 +1,51 @@
 <template>
-  <v-card class="d-flex justify-space-around mb-6" width="400px">
-    <v-card-title>
-      <h3>ログイン画面</h3>
-    </v-card-title>
+<div class="mx-auto p-2" style="max-width: 600px;">
+
+  <v-card
+    header-bg-variant="primary"
+    header-text-variant="white"
+  >
+    <template #header>
+      Login
+    </template>
     <v-card-text v-if="!auth">
-      <v-form>
-        <v-text-field
-          prepend-icon="mdi-account-circle"
-          label="email"
-          v-model="form.email"
-        />
-        <v-text-field
-          v-bind:type="showPassword ? 'text' : 'password'"
-          @click:append="showPassword = !showPassword"
-          prepend-icon="mdi-lock"
-          v-bind:append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-          label="パスワード"
-          v-model="form.password"
-        />
-        <v-row class="justify-center">
-          <v-btn @click="login" variant="primary" class="ma-5">ログイン</v-btn>
-          <v-btn class="ma-5"><router-link to="/signup">新規会員登録</router-link></v-btn>
+      <form @submit.prevent="login">
+        <v-row class="my-1">
+          <v-col sm="3">
+            <label for="input-email">Email</label>
+          </v-col>
+          <v-col sm="3">
+            <input
+              v-model="form.email"
+              type="text"
+              id="input-email"
+            >
+          </v-col>
         </v-row>
-        <br>
-          <p>登録していない方はこちら → </p>
-      </v-form>
+        <v-row class="my-1">
+          <v-col sm="3">
+            <label for="input-password">Password</label>
+          </v-col>
+          <v-col sm="9">
+            <input
+              v-model="form.password"
+              type="password"
+              autocomplete="new-password"
+              id="input-password"
+            >
+          </v-col>
+        </v-row>
+        <v-alert v-if="error" show variant="danger">{{ error }}</v-alert>
+        <v-btn type="submit" variant="primary" class="float-right">ログイン</v-btn>
+      </form>
     </v-card-text>
     <v-card-text v-else>
       <p>ログインしています</p>
       <v-button @click="logout" class="float-right">ログアウト</v-button>
     </v-card-text>    
   </v-card>
+
+</div>
 </template>
 
 <script>

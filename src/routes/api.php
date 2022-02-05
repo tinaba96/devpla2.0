@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\Api\SignupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,4 @@ Route::post('/user/logout', [LoginController::class, 'logout']);
 Route::middleware('auth:sanctum')->group(function(){
     Route::get('/user/auth', [LoginController::class, 'auth']);
 });
+Route::post('/signup', [SignupController::class, 'postSignup'])->name('index');

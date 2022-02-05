@@ -18,7 +18,6 @@
 </head>
 <body>
   <div id="app">
-    asdf
     <router-view />
   </div>
 </body>
