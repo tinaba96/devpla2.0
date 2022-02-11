@@ -713,12 +713,7 @@ var render = function () {
                   _c(
                     "v-btn",
                     { staticClass: "ma-5", on: { click: _vm.signup } },
-                    [
-                      _c("router-link", { attrs: { to: "/user/login" } }, [
-                        _vm._v("新規会員登録"),
-                      ]),
-                    ],
-                    1
+                    [_vm._v("新規会員登録")]
                   ),
                 ],
                 1
@@ -16144,6 +16139,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Login_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Login.vue */ "./resources/js/components/Login.vue");
 /* harmony import */ var _components_Account_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Account.vue */ "./resources/js/components/Account.vue");
 /* harmony import */ var _components_SignUp_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/SignUp.vue */ "./resources/js/components/SignUp.vue");
+/*========== vue.js ルート機能 =========*/
 
 
 

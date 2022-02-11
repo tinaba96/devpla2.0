@@ -2,7 +2,6 @@ version: '3.8'
 
 services:
   app:
-    env_file: ./.env
     build:
       context: .
       dockerfile: ./docker/php/Dockerfile
@@ -16,7 +15,6 @@ services:
       - DB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
 
   nginx:
-    env_file: ./.env
     build:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
