@@ -24,7 +24,7 @@
           v-model="form.password"
         />
         <v-row class="justify-center">
-          <v-btn @click="signup" class="ma-5"><router-link to="/user/login">新規会員登録</router-link></v-btn>
+          <v-btn @click="signup" class="ma-5">新規会員登録</v-btn>
         </v-row>
       </v-form>
     </v-card-text>
