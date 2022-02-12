@@ -38,6 +38,10 @@ export default {
           name: "アカウント",
           url: "/user/account",
         },
+        {
+          name: "アカウント登録",
+          url: "/member",
+        },
       ],
     };
   },
