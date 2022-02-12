@@ -20904,7 +20904,7 @@ var render = function () {
       attrs: { width: "400px" },
     },
     [
-      _c("v-card-title", [_c("h3", [_vm._v("ログイン画面")])]),
+      _c("v-card-title", [_c("h3", [_vm._v("ログイン画面!")])]),
       _vm._v(" "),
       !_vm.auth
         ? _c(

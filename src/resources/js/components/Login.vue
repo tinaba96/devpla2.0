@@ -1,7 +1,7 @@
 <template>
   <v-card class="d-flex justify-space-around mb-6" width="400px">
     <v-card-title>
-      <h3>ログイン画面</h3>
+      <h3>ログイン画面!</h3>
     </v-card-title>
     <v-card-text v-if="!auth">
       <v-form>
@@ -29,7 +29,7 @@
     <v-card-text v-else>
       <p>ログインしています</p>
       <v-button @click="logout" class="float-right">ログアウト</v-button>
-    </v-card-text>    
+    </v-card-text>
   </v-card>
 </template>
 
