@@ -486,11 +486,11 @@ var render = function () {
               )
             : _c("v-card-text", { staticClass: "p-2 text-danger" }, [
                 _vm._v(
-                  "\n      " +
+                  "\r\n      " +
                     _vm._s(_vm.error.status) +
                     " " +
                     _vm._s(_vm.error.statusText) +
-                    "\n    "
+                    "\r\n    "
                 ),
               ]),
         ],
