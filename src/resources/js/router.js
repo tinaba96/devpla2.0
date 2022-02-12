@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Login from './views/Login.vue'
+import Login from './views/SignIn.vue'
 import Account from './views/Account.vue'
 import SignUp from './views/SignUp.vue'
 
@@ -13,8 +13,8 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     {
-      path: '/user/login',
-      name: 'login',
+      path: '/user/signin',
+      name: 'signin',
       component: Login,
     },
     {
