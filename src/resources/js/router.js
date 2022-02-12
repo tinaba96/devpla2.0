@@ -3,9 +3,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Login from './components/Login.vue'
-import Account from './components/Account.vue'
-import SignUp from './components/SignUp.vue'
+import Login from './views/Login.vue'
+import Account from './views/Account.vue'
+import SignUp from './views/SignUp.vue'
 
 Vue.use(VueRouter)
 
