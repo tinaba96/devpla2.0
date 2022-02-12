@@ -155,15 +155,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       valid: true,
-      name: "",
+      userName: "",
       email: "",
       password: "",
-      gender: ['男性', '女性'],
-      experience: ['1年未満', '1~3年', '4~10年'],
+      gender: ["男性", "女性"],
+      experience: ["1年未満", "1~3年", "4~10年"],
       nameRules: [function (v) {
         return !!v || "Name is required";
       }, function (v) {
@@ -174,7 +195,12 @@ __webpack_require__.r(__webpack_exports__);
       }, function (v) {
         return /.+@.+\..+/.test(v) || "E-mail must be valid";
       }],
-      passWordRules: []
+      passWordRules: [function (v) {
+        return /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\\d)[a-zA-Z\\d]{8,32}$/.test(v) || "半角の大文字/小文字/記号をそれぞれ1つ以上含む8文字以上32文字以下の文字列";
+      }],
+      requiredRules: [function (v) {
+        return !!v || "入力必須です";
+      }]
     };
   },
   methods: {
@@ -378,7 +404,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.required[data-v-668c6779]{\r\n    color:red\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.required[data-v-668c6779] {\r\n    color: red;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1156,184 +1182,252 @@ var render = function () {
       ),
       _vm._v(" "),
       _c(
-        "v-row",
-        { attrs: { justify: "center" } },
+        "v-form",
+        {
+          ref: "form",
+          attrs: { "lazy-validation": "" },
+          model: {
+            value: _vm.valid,
+            callback: function ($$v) {
+              _vm.valid = $$v
+            },
+            expression: "valid",
+          },
+        },
         [
-          _c("v-col", { attrs: { cols: "2" } }, [_vm._v("ユーザー名")]),
-          _vm._v(" "),
-          _c("v-col", { staticClass: "required", attrs: { cols: "2" } }, [
-            _vm._v("必須"),
-          ]),
-          _vm._v(" "),
           _c(
-            "v-col",
-            { attrs: { cols: "8" } },
+            "v-row",
+            { attrs: { justify: "center" } },
             [
-              _c("v-text-field", {
-                attrs: {
-                  counter: 10,
-                  rules: _vm.nameRules,
-                  label: "山田太郎",
-                  required: "",
-                  outlined: "",
-                },
-                model: {
-                  value: _vm.name,
-                  callback: function ($$v) {
-                    _vm.name = $$v
-                  },
-                  expression: "name",
-                },
-              }),
+              _c("v-col", { attrs: { cols: "2" } }, [_vm._v("ユーザー名")]),
+              _vm._v(" "),
+              _c("v-col", { staticClass: "required", attrs: { cols: "2" } }, [
+                _vm._v("必須"),
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                { attrs: { cols: "8" } },
+                [
+                  _c("v-text-field", {
+                    attrs: {
+                      counter: 10,
+                      rules: _vm.nameRules,
+                      label: "山田太郎",
+                      required: "",
+                      outlined: "",
+                    },
+                    model: {
+                      value: _vm.userName,
+                      callback: function ($$v) {
+                        _vm.userName = $$v
+                      },
+                      expression: "userName",
+                    },
+                  }),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-col", { attrs: { cols: "2" } }, [_vm._v("メールアドレス")]),
+              _vm._v(" "),
+              _c("v-col", { staticClass: "required", attrs: { cols: "2" } }, [
+                _vm._v("必須"),
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                { attrs: { cols: "8" } },
+                [
+                  _c("v-text-field", {
+                    attrs: {
+                      rules: _vm.emailRules,
+                      label: "japan@email.com",
+                      required: "",
+                      outlined: "",
+                    },
+                    model: {
+                      value: _vm.email,
+                      callback: function ($$v) {
+                        _vm.email = $$v
+                      },
+                      expression: "email",
+                    },
+                  }),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-col", { attrs: { cols: "4" } }),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                { attrs: { cols: "8" } },
+                [
+                  _c("v-text-field", {
+                    attrs: {
+                      rules: _vm.emailRules,
+                      label: "japan@email.com",
+                      required: "",
+                      outlined: "",
+                    },
+                    model: {
+                      value: _vm.email,
+                      callback: function ($$v) {
+                        _vm.email = $$v
+                      },
+                      expression: "email",
+                    },
+                  }),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-col", { attrs: { cols: "2" } }, [_vm._v("パスワード")]),
+              _vm._v(" "),
+              _c("v-col", { staticClass: "required", attrs: { cols: "2" } }, [
+                _vm._v("必須"),
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                { attrs: { cols: "8" } },
+                [
+                  _c("v-text-field", {
+                    attrs: {
+                      rules: _vm.passWordRules,
+                      label: "password",
+                      type: "password",
+                      required: "",
+                      outlined: "",
+                    },
+                    model: {
+                      value: _vm.password,
+                      callback: function ($$v) {
+                        _vm.password = $$v
+                      },
+                      expression: "password",
+                    },
+                  }),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-col", { attrs: { cols: "4" } }),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                { attrs: { cols: "8" } },
+                [
+                  _c("v-text-field", {
+                    attrs: {
+                      rules: _vm.passWordRules,
+                      label: "password",
+                      type: "password",
+                      required: "",
+                      outlined: "",
+                    },
+                    model: {
+                      value: _vm.password,
+                      callback: function ($$v) {
+                        _vm.password = $$v
+                      },
+                      expression: "password",
+                    },
+                  }),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-col", { attrs: { cols: "2" } }, [_vm._v("性別")]),
+              _vm._v(" "),
+              _c("v-col", { staticClass: "required", attrs: { cols: "2" } }, [
+                _vm._v("必須"),
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                { attrs: { cols: "8" } },
+                [
+                  _c("v-autocomplete", {
+                    attrs: {
+                      items: _vm.gender,
+                      rules: _vm.requiredRules,
+                      required: "",
+                      outlined: "",
+                    },
+                  }),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-col", { attrs: { cols: "2" } }, [
+                _vm._v("プログラミング経験"),
+              ]),
+              _vm._v(" "),
+              _c("v-col", { staticClass: "required", attrs: { cols: "2" } }, [
+                _vm._v("必須"),
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                { attrs: { cols: "8" } },
+                [
+                  _c("v-autocomplete", {
+                    attrs: {
+                      items: _vm.experience,
+                      rules: _vm.requiredRules,
+                      required: "",
+                      outlined: "",
+                    },
+                  }),
+                ],
+                1
+              ),
             ],
             1
           ),
           _vm._v(" "),
-          _c("v-col", { attrs: { cols: "2" } }, [_vm._v("メールアドレス")]),
-          _vm._v(" "),
-          _c("v-col", { staticClass: "required", attrs: { cols: "2" } }, [
-            _vm._v("必須"),
-          ]),
-          _vm._v(" "),
           _c(
-            "v-col",
-            { attrs: { cols: "8" } },
+            "v-row",
             [
-              _c("v-text-field", {
-                attrs: {
-                  rules: _vm.emailRules,
-                  label: "japan@email.com",
-                  required: "",
-                  outlined: "",
-                },
-                model: {
-                  value: _vm.email,
-                  callback: function ($$v) {
-                    _vm.email = $$v
-                  },
-                  expression: "email",
-                },
-              }),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("v-col", { attrs: { cols: "4" } }),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            { attrs: { cols: "8" } },
-            [
-              _c("v-text-field", {
-                attrs: {
-                  rules: _vm.emailRules,
-                  label: "japan@email.com",
-                  required: "",
-                  outlined: "",
-                },
-                model: {
-                  value: _vm.email,
-                  callback: function ($$v) {
-                    _vm.email = $$v
-                  },
-                  expression: "email",
-                },
-              }),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("v-col", { attrs: { cols: "2" } }, [_vm._v("パスワード")]),
-          _vm._v(" "),
-          _c("v-col", { staticClass: "required", attrs: { cols: "2" } }, [
-            _vm._v("必須"),
-          ]),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            { attrs: { cols: "8" } },
-            [
-              _c("v-text-field", {
-                attrs: {
-                  rules: _vm.passWordRules,
-                  label: "password",
-                  type: "password",
-                  required: "",
-                  outlined: "",
-                },
-                model: {
-                  value: _vm.password,
-                  callback: function ($$v) {
-                    _vm.password = $$v
-                  },
-                  expression: "password",
-                },
-              }),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("v-col", { attrs: { cols: "4" } }),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            { attrs: { cols: "8" } },
-            [
-              _c("v-text-field", {
-                attrs: {
-                  rules: _vm.passWordRules,
-                  label: "password",
-                  type: "password",
-                  required: "",
-                  outlined: "",
-                },
-                model: {
-                  value: _vm.password,
-                  callback: function ($$v) {
-                    _vm.password = $$v
-                  },
-                  expression: "password",
-                },
-              }),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("v-col", { attrs: { cols: "2" } }, [_vm._v("性別")]),
-          _vm._v(" "),
-          _c("v-col", { staticClass: "required", attrs: { cols: "2" } }, [
-            _vm._v("必須"),
-          ]),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            { attrs: { cols: "8" } },
-            [
-              _c("v-autocomplete", {
-                attrs: { items: _vm.gender, required: "", outlined: "" },
-              }),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("v-col", { attrs: { cols: "2" } }, [_vm._v("プログラミング経験")]),
-          _vm._v(" "),
-          _c("v-col", { staticClass: "required", attrs: { cols: "2" } }, [
-            _vm._v("必須"),
-          ]),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            { attrs: { cols: "8" } },
-            [
-              _c("v-autocomplete", {
-                attrs: { items: _vm.experience, required: "", outlined: "" },
-              }),
+              _c(
+                "v-col",
+                { staticClass: "text-center" },
+                [_c("v-btn", [_vm._v("以上の内容で会員登録する")])],
+                1
+              ),
             ],
             1
           ),
         ],
         1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-btn",
+        {
+          staticClass: "mr-4",
+          attrs: { disabled: !_vm.valid, color: "success" },
+          on: { click: _vm.validate },
+        },
+        [_vm._v("\n        Validate\n    ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-btn",
+        {
+          staticClass: "mr-4",
+          attrs: { color: "error" },
+          on: { click: _vm.reset },
+        },
+        [_vm._v(" Reset Form ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-btn",
+        { attrs: { color: "warning" }, on: { click: _vm.resetValidation } },
+        [_vm._v("\n        Reset Validation\n    ")]
       ),
     ],
     1
