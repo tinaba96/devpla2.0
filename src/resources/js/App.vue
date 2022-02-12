@@ -1,19 +1,45 @@
 <template>
-    <div>
-        <header>
-            <v-toolbar-title>
-                &nbsp;&nbsp;
-                <router-link to="/user/account"> Account </router-link>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <router-link to="/user/login"> Login </router-link>
-            </v-toolbar-title>
-        </header>
-        <main>
-            <router-view></router-view>
-        </main>
-    </div>
+  <v-app id="inspire">
+    <v-navigation-drawer v-model="drawer" app>
+      <v-list rounded>
+        <v-subheader>メニュー</v-subheader>
+        <v-list-item-group color="primary">
+          <div v-for="page in pages" :key="page.name">
+            <router-link :to="page.url"><v-list-item>{{ page.name }}</v-list-item></router-link>
+          </div>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+    <v-app-bar app>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title>devpla2.0</v-toolbar-title>
+    </v-app-bar>
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      drawer: null,
+      pages: [
+        {
+          name: "ログイン",
+          url: "/user/signin",
+        },
+        {
+          name: "新規登録",
+          url: "/signup",
+        },
+        {
+          name: "アカウント",
+          url: "/user/account",
+        },
+      ],
+    };
+  },
+};
 </script>
