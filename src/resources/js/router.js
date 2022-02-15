@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Login from './components/Login.vue'
+import Login from './components/SignIn.vue'
 import Account from './components/Account.vue'
 import SignUp from './components/SignUp.vue'
 
