@@ -3,31 +3,43 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Login from './components/SignIn.vue'
-import Account from './components/Account.vue'
-import SignUp from './components/SignUp.vue'
+import Login from './views/SignIn.vue'
+import Account from './views/Account.vue'
+import SignUp from './views/SignUp.vue'
+import Member from './views/Member.vue'
+import Profile from './views/Profile.vue'
 
 Vue.use(VueRouter)
 
 const router = new VueRouter({
-  mode: 'history',
-  routes: [
-    {
-      path: '/user/login',
-      name: 'login',
-      component: Login,
-    },
-    {
-      path: '/user/account',
-      name: 'account',
-      component: Account,
-    },
-    {
-      path: '/signup',
-      name: 'signup',
-      component: SignUp,
-    },
-  ]
+    mode: 'history',
+    routes: [
+        {
+            path: '/user/signin',
+            name: 'signin',
+            component: Login,
+        },
+        {
+            path: '/user/account',
+            name: 'account',
+            component: Account,
+        },
+        {
+            path: '/signup',
+            name: 'signup',
+            component: SignUp,
+        },
+        {
+            path: '/member',
+            name: 'member',
+            component: Member,
+        },
+        {
+            path: '/profile',
+            name: 'profile',
+            component: Profile,
+        },
+    ]
 })
 
 export default router
