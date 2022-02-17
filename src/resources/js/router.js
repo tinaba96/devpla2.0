@@ -8,6 +8,7 @@ import Account from './views/Account.vue'
 import SignUp from './views/SignUp.vue'
 import Member from './views/Member.vue'
 import Profile from './views/Profile.vue'
+import Withdrawal from './views/Withdrawal.vue'
 
 Vue.use(VueRouter)
 
@@ -38,6 +39,11 @@ const router = new VueRouter({
             path: '/profile',
             name: 'profile',
             component: Profile,
+        },
+        {
+            path: '/withdrawal',
+            name: 'Withdrawal',
+            component: Withdrawal,
         },
     ]
 })

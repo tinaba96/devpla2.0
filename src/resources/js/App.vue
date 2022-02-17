@@ -46,6 +46,10 @@ export default {
           name: "プロフィール",
           url: "/profile",
         },
+        {
+          name: "退会",
+          url: "/withdrawal",
+        },
       ],
     };
   },

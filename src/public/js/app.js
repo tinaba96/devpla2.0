@@ -2106,6 +2106,9 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         name: "プロフィール",
         url: "/profile"
+      }, {
+        name: "退会",
+        url: "/withdrawal"
       }]
     };
   }
@@ -2610,13 +2613,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _views_SignIn_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/SignIn.vue */ "./resources/js/views/SignIn.vue");
 /* harmony import */ var _views_Account_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/Account.vue */ "./resources/js/views/Account.vue");
 /* harmony import */ var _views_SignUp_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/SignUp.vue */ "./resources/js/views/SignUp.vue");
 /* harmony import */ var _views_Member_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/Member.vue */ "./resources/js/views/Member.vue");
 /* harmony import */ var _views_Profile_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/Profile.vue */ "./resources/js/views/Profile.vue");
+/* harmony import */ var _views_Withdrawal_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/Withdrawal.vue */ "./resources/js/views/Withdrawal.vue");
 /*========== vue.js ルート機能 =========*/
 
 
@@ -2625,8 +2629,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_5__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]);
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]({
+
+vue__WEBPACK_IMPORTED_MODULE_6__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_7__["default"]);
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_7__["default"]({
   mode: 'history',
   routes: [{
     path: '/user/signin',
@@ -2648,6 +2653,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]({
     path: '/profile',
     name: 'profile',
     component: _views_Profile_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }, {
+    path: '/withdrawal',
+    name: 'Withdrawal',
+    component: _views_Withdrawal_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
@@ -21017,6 +21026,43 @@ component.options.__file = "resources/js/views/SignUp.vue"
 
 /***/ }),
 
+/***/ "./resources/js/views/Withdrawal.vue":
+/*!*******************************************!*\
+  !*** ./resources/js/views/Withdrawal.vue ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Withdrawal_vue_vue_type_template_id_0368d894___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Withdrawal.vue?vue&type=template&id=0368d894& */ "./resources/js/views/Withdrawal.vue?vue&type=template&id=0368d894&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _Withdrawal_vue_vue_type_template_id_0368d894___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Withdrawal_vue_vue_type_template_id_0368d894___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/Withdrawal.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/App.vue?vue&type=script&lang=js&":
 /*!*******************************************************!*\
   !*** ./resources/js/App.vue?vue&type=script&lang=js& ***!
@@ -21221,6 +21267,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SignUp_vue_vue_type_template_id_6170cb17___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SignUp_vue_vue_type_template_id_6170cb17___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SignUp.vue?vue&type=template&id=6170cb17& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/SignUp.vue?vue&type=template&id=6170cb17&");
+
+
+/***/ }),
+
+/***/ "./resources/js/views/Withdrawal.vue?vue&type=template&id=0368d894&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/views/Withdrawal.vue?vue&type=template&id=0368d894& ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Withdrawal_vue_vue_type_template_id_0368d894___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Withdrawal_vue_vue_type_template_id_0368d894___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Withdrawal_vue_vue_type_template_id_0368d894___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Withdrawal.vue?vue&type=template&id=0368d894& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/Withdrawal.vue?vue&type=template&id=0368d894&");
 
 
 /***/ }),
@@ -21720,12 +21783,26 @@ var render = function () {
             [
               _c("v-img", {
                 attrs: {
-                  "max-height": "200",
+                  "max-height": "300",
                   "max-width": "300",
                   src: " https://snowman-1.s3.ap-northeast-1.amazonaws.com/devpla/default.png",
                   alt: "profile_image",
                 },
               }),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("div", [_vm._v("名前")]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("div", [_vm._v("フォロー数")]),
+              _vm._v(" "),
+              _c("div", [_vm._v("フォロワー数")]),
+              _vm._v(" "),
+              _c("div", [_vm._v("利用開始日")]),
+              _vm._v(" "),
+              _c("div", [_vm._v("写真の編集")]),
             ],
             1
           ),
@@ -21734,7 +21811,7 @@ var render = function () {
           _vm._v(" "),
           _c(
             "v-col",
-            { staticClass: "red--text text--lighten-1", attrs: { cols: "6" } },
+            { attrs: { cols: "6" } },
             [
               _vm._v("\n            プロフィール\n            "),
               _c("br"),
@@ -21746,8 +21823,12 @@ var render = function () {
               _c("br"),
               _vm._v("\n            職歴\n            "),
               _c("br"),
-              _vm._v("\n            資格\n        "),
-            ]
+              _vm._v("\n            資格\n            "),
+              _c("br"),
+              _vm._v(" "),
+              _c("router-link", [_vm._v("退会予定の方はこちら")]),
+            ],
+            1
           ),
           _vm._v(" "),
           _c("v-col", { attrs: { cols: "2" } }),
@@ -21979,6 +22060,47 @@ var render = function () {
         ],
         1
       ),
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/Withdrawal.vue?vue&type=template&id=0368d894&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/Withdrawal.vue?vue&type=template&id=0368d894& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-container",
+    [
+      _c("div", [_vm._v("退会の確認")]),
+      _vm._v(" "),
+      _c("div", [
+        _vm._v("\n        退会をすると投稿も全て削除されます。"),
+        _c("br"),
+        _vm._v("\n        それでも退会をしますか？\n    "),
+      ]),
+      _vm._v(" "),
+      _c("v-btn", { attrs: { color: "error" } }, [_vm._v("退会する")]),
+      _vm._v(" "),
+      _c("v-btn", { attrs: { color: "primary" } }, [_vm._v("キャンセル")]),
     ],
     1
   )
