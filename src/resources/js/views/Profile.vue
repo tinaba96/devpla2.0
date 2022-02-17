@@ -14,9 +14,18 @@
                     src=" https://snowman-1.s3.ap-northeast-1.amazonaws.com/devpla/default.png"
                     alt="profile_image"
                 ></v-img>
-            </v-col>
+                <br/>
+                <div>名前</div>
+                 <br/>
+                 <div>フォロー数</div>
+                 <div>フォロワー数</div>
+                 <div>利用開始日</div>
+                 <div>写真の編集</div>
+
+
+                </v-col>
             <v-col cols="1"></v-col>
-            <v-col cols="6" class="red--text text--lighten-1">
+            <v-col cols="6">
                 プロフィール
                 <br />
                 スキル
@@ -28,6 +37,8 @@
                 職歴
                 <br />
                 資格
+                <br/>
+                <router-link>退会予定の方はこちら</router-link>
             </v-col>
             <v-col cols="2"> </v-col>
         </v-row>
