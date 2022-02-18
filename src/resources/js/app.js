@@ -20,22 +20,32 @@ Vue.use(Vuetify);
 Vue.config.productionTip = false;
 window.Vue = require('vue').default;
 
-import store from './store'
+
+const app = new Vue({
+  el: '#app',
+  router: router,
+  vuetify: vuetify,
+  components: { App },
+  template: '<App />'
+});
+
+
+// import store from './store'
 
 // import vuetify from "../../plugins/vuetify.js"
 
 
-const createApp = async () => {
-    await store.dispatch('auth/currentUser')
+// const createApp = async () => {
+//     await store.dispatch('auth/currentUser')
   
-    new Vue({
-      el: '#app',
-      router,
-      store,
-      vuetify: vuetify,
-      components: { App },
-      template: '<App />'
-    })
-  }
+//     new Vue({
+//       el: '#app',
+//       router,
+//       store,
+//       vuetify: vuetify,
+//       components: { App },
+//       template: '<App />'
+//     })
+//   }
   
-  createApp()
+  // createApp()

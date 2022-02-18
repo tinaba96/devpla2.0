@@ -2,6 +2,7 @@ const { VueLoaderPlugin } = require('vue-loader');
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 
 module.exports = {
+  mode: "development",
   module: {
     rules: [
 
@@ -29,9 +30,7 @@ module.exports = {
           'css-loader',
           {
             loader: 'sass-loader',
-            // Requires >= sass-loader@^8.0.0
             options: {
-              sourceMap: enabledSourceMap,
               implementation: require('sass'),
               sassOptions: {
                 indentedSyntax: true // optional

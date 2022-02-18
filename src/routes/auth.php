@@ -8,7 +8,12 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+
+Route::post('/login',[LoginController::class, 'login'])
+                ->middleware('guest')
+                ->name('login');
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
                 ->middleware('guest')
@@ -17,12 +22,12 @@ Route::get('/register', [RegisteredUserController::class, 'create'])
 Route::post('/register', [RegisteredUserController::class, 'store'])
                 ->middleware('guest');
 
-Route::get('/login', [AuthenticatedSessionController::class, 'create'])
-                ->middleware('guest')
-                ->name('login');
+// Route::get('/login1', [AuthenticatedSessionController::class, 'create'])
+//                 ->middleware('guest')
+//                 ->name('login');
 
-Route::post('/login', [AuthenticatedSessionController::class, 'store'])
-                ->middleware('guest');
+// Route::post('/login', [AuthenticatedSessionController::class, 'store'])
+//                 ->middleware('guest');
 
 Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->middleware('guest')

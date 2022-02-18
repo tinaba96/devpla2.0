@@ -5,8 +5,9 @@ import VueRouter from 'vue-router'
 import Test from './pages/Test.vue'
 import Test2 from './pages/Test2.vue'
 import Login from './pages/Login.vue'
-import SystemError from './pages/errors/System.vue'
-import store from './store'
+import About from './pages/About.vue'
+// import SystemError from './pages/errors/System.vue'
+// import store from './store'
 
 
 Vue.use(VueRouter)
@@ -23,21 +24,32 @@ const routes = [
 		path: '/test2',
 		component: Test2
 	},
+	// {
+	//   path: '/login',
+	//   component: Login,
+	//   beforeEnter (to, from, next) {
+	// 	if (store.getters['auth/check']) {
+	// 	  next('/')
+	// 	} else {
+	// 	  next()
+	// 	}
+	//   }
+	// },
 	{
-	  path: '/login',
-	  component: Login,
-	  beforeEnter (to, from, next) {
-		if (store.getters['auth/check']) {
-		  next('/')
-		} else {
-		  next()
-		}
-	  }
+		path: "/login",
+		name: "Login",
+		component: Login,
 	},
 	{
-		path: '/500',
-		component: SystemError
+		path: "/about",
+		name: "About",
+		component: About,
 	}
+
+	// {
+	// 	path: '/500',
+	// 	component: SystemError
+	// }
   ]
   
   // VueRouterインスタンスを作成する

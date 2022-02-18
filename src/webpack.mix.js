@@ -13,12 +13,12 @@ const webpack = require('./webpack.config');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+  .js("resources/js/router.js", "public/js") 
   .css('resources/css/app.css', 'public/css', [
     require('postcss-import'),
     require('tailwindcss'),
     require('autoprefixer'),
 ])
-  // .css('resources/css/app.css', 'public/css')
   .version()
   .vue()
   .browserSync({

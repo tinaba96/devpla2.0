@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+
+Route::get('/{any?}', fn() => view('index'))->where('any', '.+');
+
 // Route::get('/', function () {
 //     return view('auth/login');
 // });
@@ -21,9 +26,5 @@ use Illuminate\Support\Facades\Route;
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 
-
-// require __DIR__.'/auth.php';
-
-Route::get('/{any?}', fn() => view('index'))->where('any', '.+');
 
 

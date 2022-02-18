@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;	// 追加
 
 class Kernel extends ConsoleKernel
 {
