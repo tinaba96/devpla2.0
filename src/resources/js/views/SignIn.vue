@@ -20,7 +20,7 @@
         />
         <v-row class="justify-center">
           <v-btn @click="login" variant="primary" class="ma-5">ログイン</v-btn>
-          <v-btn class="ma-5"><router-link to="/signup">新規会員登録</router-link></v-btn>
+          <v-btn class="ma-5"><router-link to="/user/account">アカウント登録</router-link></v-btn>
         </v-row>
         <br>
       </v-form>

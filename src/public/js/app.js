@@ -2087,6 +2087,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2095,11 +2099,11 @@ __webpack_require__.r(__webpack_exports__);
         name: "ログイン",
         url: "/user/signin"
       }, {
-        name: "アカウント",
-        url: "/user/account"
-      }, {
         name: "アカウント登録",
         url: "/member"
+      }, {
+        name: "アカウント",
+        url: "/user/account"
       }]
     };
   }
@@ -21478,9 +21482,11 @@ var render = function () {
                         "v-btn",
                         { staticClass: "ma-5" },
                         [
-                          _c("router-link", { attrs: { to: "/signup" } }, [
-                            _vm._v("新規会員登録"),
-                          ]),
+                          _c(
+                            "router-link",
+                            { attrs: { to: "/user/account" } },
+                            [_vm._v("アカウント登録")]
+                          ),
                         ],
                         1
                       ),

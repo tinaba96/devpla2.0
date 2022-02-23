@@ -1383,9 +1383,11 @@ var render = function () {
                         "v-btn",
                         { staticClass: "ma-5" },
                         [
-                          _c("router-link", { attrs: { to: "/signup" } }, [
-                            _vm._v("新規会員登録"),
-                          ]),
+                          _c(
+                            "router-link",
+                            { attrs: { to: "/user/account" } },
+                            [_vm._v("アカウント登録")]
+                          ),
                         ],
                         1
                       ),
