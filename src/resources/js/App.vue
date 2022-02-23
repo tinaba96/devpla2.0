@@ -31,10 +31,6 @@ export default {
           url: "/user/signin",
         },
         {
-          name: "新規登録",
-          url: "/signup",
-        },
-        {
           name: "アカウント",
           url: "/user/account",
         },
