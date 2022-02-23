@@ -37,6 +37,7 @@
   export default {
     data() {
       return {
+        showPassword: false,
         form: {
           email: '',
           password: '',
