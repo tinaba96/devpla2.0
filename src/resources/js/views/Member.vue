@@ -121,7 +121,7 @@ export default {
         nameRules: [
             (v) => !!v || "Name is required",
             (v) =>
-                (v && v.length <= 10) || "Name must be less than 10 characters",
+                (v && v.length <= 10 && v.length >= 2) || "Name must be less than 10 characters",
         ],
         emailRules: [
             (v) => !!v || "E-mail is required",
@@ -129,10 +129,7 @@ export default {
         ],
         passwordRules: [
             (v) =>
-                /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\\d)[a-zA-Z\\d]{8,32}$/.test(
-                    v
-                ) ||
-                "半角の大文字/小文字/記号をそれぞれ1つ以上含む8文字以上32文字以下の文字列",
+                (v && v.length <= 16 && v.length >= 8) || "8文字以上16文字以下",
         ],
         requiredRules: [(v) => !!v || "入力必須です"],
     }),

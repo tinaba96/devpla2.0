@@ -193,7 +193,7 @@ __webpack_require__.r(__webpack_exports__);
       nameRules: [function (v) {
         return !!v || "Name is required";
       }, function (v) {
-        return v && v.length <= 10 || "Name must be less than 10 characters";
+        return v && v.length <= 10 && v.length >= 2 || "Name must be less than 10 characters";
       }],
       emailRules: [function (v) {
         return !!v || "E-mail is required";
@@ -201,7 +201,7 @@ __webpack_require__.r(__webpack_exports__);
         return /.+@.+\..+/.test(v) || "E-mail must be valid";
       }],
       passwordRules: [function (v) {
-        return /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\\d)[a-zA-Z\\d]{8,32}$/.test(v) || "半角の大文字/小文字/記号をそれぞれ1つ以上含む8文字以上32文字以下の文字列";
+        return v && v.length <= 16 && v.length >= 8 || "8文字以上16文字以下";
       }],
       requiredRules: [function (v) {
         return !!v || "入力必須です";
@@ -1013,11 +1013,11 @@ var render = function () {
               )
             : _c("v-card-text", { staticClass: "p-2 text-danger" }, [
                 _vm._v(
-                  "\n      " +
+                  "\r\n      " +
                     _vm._s(_vm.error.status) +
                     " " +
                     _vm._s(_vm.error.statusText) +
-                    "\n    "
+                    "\r\n    "
                 ),
               ]),
         ],
