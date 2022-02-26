@@ -21202,7 +21202,7 @@ var render = function () {
             "v-row",
             { attrs: { justify: "center" } },
             [
-              _c("v-col", { attrs: { cols: "2" } }, [_vm._v("ユーザー名aa")]),
+              _c("v-col", { attrs: { cols: "2" } }, [_vm._v("ユーザー名")]),
               _vm._v(" "),
               _c("v-col", { staticClass: "required", attrs: { cols: "2" } }, [
                 _vm._v("必須"),

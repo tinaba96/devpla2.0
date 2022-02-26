@@ -7,7 +7,7 @@
         </v-row>
         <v-form ref="form" v-model="valid" lazy-validation>
             <v-row justify="center">
-                <v-col cols="2">ユーザー名aa</v-col>
+                <v-col cols="2">ユーザー名</v-col>
                 <v-col cols="2" class="required">必須</v-col>
                 <v-col cols="8">
                     <v-text-field
