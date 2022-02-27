@@ -1037,11 +1037,11 @@ var render = function () {
               )
             : _c("v-card-text", { staticClass: "p-2 text-danger" }, [
                 _vm._v(
-                  "\r\n      " +
+                  "\n      " +
                     _vm._s(_vm.error.status) +
                     " " +
                     _vm._s(_vm.error.statusText) +
-                    "\r\n    "
+                    "\n    "
                 ),
               ]),
         ],
