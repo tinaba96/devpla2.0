@@ -45,7 +45,7 @@
                 <v-col cols="8">
                     <v-text-field
                         v-model="password"
-                        :rules="passWordRules"
+                        :rules="passwordRules"
                         label="password"
                         type="password"
                         required
@@ -56,7 +56,7 @@
                 <v-col cols="8">
                     <v-text-field
                         v-model="password"
-                        :rules="passWordRules"
+                        :rules="passwordRules"
                         label="password"
                         type="password"
                         required
@@ -67,6 +67,7 @@
                 <v-col cols="2" class="required">必須</v-col>
                 <v-col cols="8">
                     <v-autocomplete
+                        v-model = "genderValue"
                         :items="gender"
                         :rules="requiredRules"
                         required
@@ -77,6 +78,7 @@
                 <v-col cols="2" class="required">必須</v-col>
                 <v-col cols="8">
                     <v-autocomplete
+                        v-model = "experienceValue"
                         :items="experience"
                         :rules="requiredRules"
                         required
@@ -86,7 +88,7 @@
             </v-row>
             <v-row>
                 <v-col class="text-center">
-                    <v-btn>以上の内容で会員登録する</v-btn>
+                    <v-btn @click="signup">以上の内容で会員登録する</v-btn>
                 </v-col>
             </v-row>
         </v-form>
@@ -113,7 +115,9 @@ export default {
         email: "",
         password: "",
         gender: ["男性", "女性"],
-        experience: ["1年未満", "1~3年", "4~10年"],
+        genderValue: null,
+        experience: ["1年未満", "1~3年", "4~10年", "11年以上"], // if you change the wording, you need to change SignupController as well
+        experienceValue: null,
         nameRules: [
             (v) => !!v || "Name is required",
             (v) =>
@@ -123,7 +127,7 @@ export default {
             (v) => !!v || "E-mail is required",
             (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
         ],
-        passWordRules: [
+        passwordRules: [
             (v) =>
                 /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\\d)[a-zA-Z\\d]{8,32}$/.test(
                     v
@@ -142,6 +146,20 @@ export default {
         resetValidation() {
             this.$refs.form.resetValidation();
         },
+        signup() {
+        axios.post('/api/signup', {
+           name: this.userName,
+           email: this.email,
+           password: this.password,
+           gender: this.genderValue,
+           yop: this.experienceValue,
+           })
+        .then((res) => {
+          this.auth = false
+          this.error = res.data.message
+        })
+        .catch((err) => {console.log(err.response)})
+      },
     },
 };
 </script>

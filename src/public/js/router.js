@@ -176,6 +176,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -184,7 +186,10 @@ __webpack_require__.r(__webpack_exports__);
       email: "",
       password: "",
       gender: ["男性", "女性"],
-      experience: ["1年未満", "1~3年", "4~10年"],
+      genderValue: null,
+      experience: ["1年未満", "1~3年", "4~10年", "11年以上"],
+      // if you change the wording, you need to change SignupController as well
+      experienceValue: null,
       nameRules: [function (v) {
         return !!v || "Name is required";
       }, function (v) {
@@ -195,7 +200,7 @@ __webpack_require__.r(__webpack_exports__);
       }, function (v) {
         return /.+@.+\..+/.test(v) || "E-mail must be valid";
       }],
-      passWordRules: [function (v) {
+      passwordRules: [function (v) {
         return /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\\d)[a-zA-Z\\d]{8,32}$/.test(v) || "半角の大文字/小文字/記号をそれぞれ1つ以上含む8文字以上32文字以下の文字列";
       }],
       requiredRules: [function (v) {
@@ -212,6 +217,22 @@ __webpack_require__.r(__webpack_exports__);
     },
     resetValidation: function resetValidation() {
       this.$refs.form.resetValidation();
+    },
+    signup: function signup() {
+      var _this = this;
+
+      axios.post('/api/signup', {
+        name: this.userName,
+        email: this.email,
+        password: this.password,
+        gender: this.genderValue,
+        yop: this.experienceValue
+      }).then(function (res) {
+        _this.auth = false;
+        _this.error = res.data.message;
+      })["catch"](function (err) {
+        console.log(err.response);
+      });
     }
   }
 });
@@ -333,7 +354,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.required[data-v-668c6779] {\r\n    color: red;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.required[data-v-668c6779] {\n    color: red;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -992,11 +1013,11 @@ var render = function () {
               )
             : _c("v-card-text", { staticClass: "p-2 text-danger" }, [
                 _vm._v(
-                  "\r\n      " +
+                  "\n      " +
                     _vm._s(_vm.error.status) +
                     " " +
                     _vm._s(_vm.error.statusText) +
-                    "\r\n    "
+                    "\n    "
                 ),
               ]),
         ],
@@ -1155,7 +1176,7 @@ var render = function () {
                 [
                   _c("v-text-field", {
                     attrs: {
-                      rules: _vm.passWordRules,
+                      rules: _vm.passwordRules,
                       label: "password",
                       type: "password",
                       required: "",
@@ -1181,7 +1202,7 @@ var render = function () {
                 [
                   _c("v-text-field", {
                     attrs: {
-                      rules: _vm.passWordRules,
+                      rules: _vm.passwordRules,
                       label: "password",
                       type: "password",
                       required: "",
@@ -1216,6 +1237,13 @@ var render = function () {
                       required: "",
                       outlined: "",
                     },
+                    model: {
+                      value: _vm.genderValue,
+                      callback: function ($$v) {
+                        _vm.genderValue = $$v
+                      },
+                      expression: "genderValue",
+                    },
                   }),
                 ],
                 1
@@ -1240,6 +1268,13 @@ var render = function () {
                       required: "",
                       outlined: "",
                     },
+                    model: {
+                      value: _vm.experienceValue,
+                      callback: function ($$v) {
+                        _vm.experienceValue = $$v
+                      },
+                      expression: "experienceValue",
+                    },
                   }),
                 ],
                 1
@@ -1254,7 +1289,11 @@ var render = function () {
               _c(
                 "v-col",
                 { staticClass: "text-center" },
-                [_c("v-btn", [_vm._v("以上の内容で会員登録する")])],
+                [
+                  _c("v-btn", { on: { click: _vm.signup } }, [
+                    _vm._v("以上の内容で会員登録する"),
+                  ]),
+                ],
                 1
               ),
             ],
