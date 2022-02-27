@@ -2289,13 +2289,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       valid: true,
+      showPassword: false,
+      showComfirmPassword: false,
       userName: "",
       email: "",
+      comfirmEmail: "",
       password: "",
+      comfirmPassword: "",
       gender: ["男性", "女性"],
       genderValue: null,
       experience: ["1年未満", "1~3年", "4~10年", "11年以上"],
@@ -2312,12 +2326,22 @@ __webpack_require__.r(__webpack_exports__);
         return /.+@.+\..+/.test(v) || "E-mail must be valid";
       }],
       passwordRules: [function (v) {
-        return /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\\d)[a-zA-Z\\d]{8,32}$/.test(v) || "半角の大文字/小文字/記号をそれぞれ1つ以上含む8文字以上32文字以下の文字列";
+        return !!v || "password is required";
+      }, function (v) {
+        return v && v.length <= 16 && v.length >= 8 || "パスワードは8文字以上16文字以下";
       }],
       requiredRules: [function (v) {
         return !!v || "入力必須です";
       }]
     };
+  },
+  computed: {
+    matchEmail: function matchEmail() {
+      return this.email == this.comfirmEmail ? "一致しています" : "一致していません";
+    },
+    matchPassword: function matchPassword() {
+      return this.password == this.comfirmPassword ? "一致しています" : "一致していません";
+    }
   },
   methods: {
     validate: function validate() {
@@ -2332,7 +2356,7 @@ __webpack_require__.r(__webpack_exports__);
     signup: function signup() {
       var _this = this;
 
-      axios.post('/api/signup', {
+      axios.post("/api/signup", {
         name: this.userName,
         email: this.email,
         password: this.password,
@@ -21251,13 +21275,17 @@ var render = function () {
                       outlined: "",
                     },
                     model: {
-                      value: _vm.email,
+                      value: _vm.comfirmEmail,
                       callback: function ($$v) {
-                        _vm.email = $$v
+                        _vm.comfirmEmail = $$v
                       },
-                      expression: "email",
+                      expression: "comfirmEmail",
                     },
                   }),
+                  _vm._v(" "),
+                  _c("div", [
+                    _vm._v("メールアドレスが" + _vm._s(_vm.matchEmail)),
+                  ]),
                 ],
                 1
               ),
@@ -21274,11 +21302,19 @@ var render = function () {
                 [
                   _c("v-text-field", {
                     attrs: {
+                      type: _vm.showPassword ? "text" : "password",
+                      "append-icon": _vm.showPassword
+                        ? "mdi-eye"
+                        : "mdi-eye-off",
                       rules: _vm.passwordRules,
                       label: "password",
-                      type: "password",
                       required: "",
                       outlined: "",
+                    },
+                    on: {
+                      "click:append": function ($event) {
+                        _vm.showPassword = !_vm.showPassword
+                      },
                     },
                     model: {
                       value: _vm.password,
@@ -21300,20 +21336,32 @@ var render = function () {
                 [
                   _c("v-text-field", {
                     attrs: {
+                      type: _vm.showComfirmPassword ? "text" : "password",
+                      "append-icon": _vm.showComfirmPassword
+                        ? "mdi-eye"
+                        : "mdi-eye-off",
                       rules: _vm.passwordRules,
                       label: "password",
-                      type: "password",
                       required: "",
                       outlined: "",
                     },
-                    model: {
-                      value: _vm.password,
-                      callback: function ($$v) {
-                        _vm.password = $$v
+                    on: {
+                      "click:append": function ($event) {
+                        _vm.showComfirmPassword = !_vm.showComfirmPassword
                       },
-                      expression: "password",
+                    },
+                    model: {
+                      value: _vm.comfirmPassword,
+                      callback: function ($$v) {
+                        _vm.comfirmPassword = $$v
+                      },
+                      expression: "comfirmPassword",
                     },
                   }),
+                  _vm._v(" "),
+                  _c("div", [
+                    _vm._v("パスワードが" + _vm._s(_vm.matchPassword)),
+                  ]),
                 ],
                 1
               ),
@@ -21332,7 +21380,6 @@ var render = function () {
                     attrs: {
                       items: _vm.gender,
                       rules: _vm.requiredRules,
-                      required: "",
                       outlined: "",
                     },
                     model: {
@@ -21363,7 +21410,6 @@ var render = function () {
                     attrs: {
                       items: _vm.experience,
                       rules: _vm.requiredRules,
-                      required: "",
                       outlined: "",
                     },
                     model: {

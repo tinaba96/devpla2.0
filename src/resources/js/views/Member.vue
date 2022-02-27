@@ -33,21 +33,26 @@
                 <v-col cols="4"></v-col>
                 <v-col cols="8">
                     <v-text-field
-                        v-model="email"
+                        v-model="comfirmEmail"
                         :rules="emailRules"
                         label="japan@email.com"
                         required
                         outlined
                     ></v-text-field>
+                    <div>メールアドレスが{{matchEmail}}</div>
                 </v-col>
                 <v-col cols="2">パスワード</v-col>
                 <v-col cols="2" class="required">必須</v-col>
                 <v-col cols="8">
                     <v-text-field
                         v-model="password"
+                        v-bind:type="showPassword ? 'text' : 'password'"
+                        @click:append="showPassword = !showPassword"
+                        v-bind:append-icon="
+                            showPassword ? 'mdi-eye' : 'mdi-eye-off'
+                        "
                         :rules="passwordRules"
                         label="password"
-                        type="password"
                         required
                         outlined
                     ></v-text-field>
@@ -55,22 +60,28 @@
                 <v-col cols="4"></v-col>
                 <v-col cols="8">
                     <v-text-field
-                        v-model="password"
+                        v-model="comfirmPassword"
+                        v-bind:type="showComfirmPassword ? 'text' : 'password'"
+                        @click:append="
+                            showComfirmPassword = !showComfirmPassword
+                        "
+                        v-bind:append-icon="
+                            showComfirmPassword ? 'mdi-eye' : 'mdi-eye-off'
+                        "
                         :rules="passwordRules"
                         label="password"
-                        type="password"
                         required
                         outlined
                     ></v-text-field>
+                    <div>パスワードが{{matchPassword}}</div>
                 </v-col>
                 <v-col cols="2">性別</v-col>
                 <v-col cols="2" class="required">必須</v-col>
                 <v-col cols="8">
                     <v-autocomplete
-                        v-model = "genderValue"
+                        v-model="genderValue"
                         :items="gender"
                         :rules="requiredRules"
-                        required
                         outlined
                     ></v-autocomplete>
                 </v-col>
@@ -78,10 +89,9 @@
                 <v-col cols="2" class="required">必須</v-col>
                 <v-col cols="8">
                     <v-autocomplete
-                        v-model = "experienceValue"
+                        v-model="experienceValue"
                         :items="experience"
                         :rules="requiredRules"
-                        required
                         outlined
                     ></v-autocomplete>
                 </v-col>
@@ -111,9 +121,13 @@
 export default {
     data: () => ({
         valid: true,
+        showPassword: false,
+        showComfirmPassword: false,
         userName: "",
         email: "",
+        comfirmEmail: "",
         password: "",
+        comfirmPassword: "",
         gender: ["男性", "女性"],
         genderValue: null,
         experience: ["1年未満", "1~3年", "4~10年", "11年以上"], // if you change the wording, you need to change SignupController as well
@@ -128,14 +142,23 @@ export default {
             (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
         ],
         passwordRules: [
+            (v) => !!v || "password is required",
             (v) =>
-                /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\\d)[a-zA-Z\\d]{8,32}$/.test(
-                    v
-                ) ||
-                "半角の大文字/小文字/記号をそれぞれ1つ以上含む8文字以上32文字以下の文字列",
+                (v && v.length <= 16 && v.length >= 8) ||
+                "パスワードは8文字以上16文字以下",
         ],
         requiredRules: [(v) => !!v || "入力必須です"],
     }),
+
+    computed: {
+        matchEmail() {
+            return this.email == this.comfirmEmail ? "一致しています":"一致していません"
+        },
+        matchPassword() {
+            return this.password == this.comfirmPassword ? "一致しています":"一致していません"
+        },
+    },
+
     methods: {
         validate() {
             this.$refs.form.validate();
@@ -147,19 +170,22 @@ export default {
             this.$refs.form.resetValidation();
         },
         signup() {
-        axios.post('/api/signup', {
-           name: this.userName,
-           email: this.email,
-           password: this.password,
-           gender: this.genderValue,
-           yop: this.experienceValue,
-           })
-        .then((res) => {
-          this.auth = false
-          this.error = res.data.message
-        })
-        .catch((err) => {console.log(err.response)})
-      },
+            axios
+                .post("/api/signup", {
+                    name: this.userName,
+                    email: this.email,
+                    password: this.password,
+                    gender: this.genderValue,
+                    yop: this.experienceValue,
+                })
+                .then((res) => {
+                    this.auth = false;
+                    this.error = res.data.message;
+                })
+                .catch((err) => {
+                    console.log(err.response);
+                });
+        },
     },
 };
 </script>
