@@ -38,22 +38,51 @@ class SignupController extends Controller
     public function postSignup(Request $request)
     {
          /** @var Illuminate\Validation\Validator $validator */
-         $validator = Validator::make($request->form, [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+        //  $validator = Validator::make($request->form, [
+        //     'name' => 'required',
+        //     'email' => 'required|email',
+        //     'password' => 'required'
+        // ]);
 
-        if ($validator->fails()) {
-            return response()->json($validator->messages(), Response::HTTP_UNPROCESSABLE_ENTITY);
+        // if ($validator->fails()) {
+        //     return response()->json($validator->messages(), Response::HTTP_UNPROCESSABLE_ENTITY);
+        // }
+        switch($request->gender){
+            case "男性":
+                $gender = 'male';
+                break;
+            case "女性":
+                $gender = 'female';
+                break;
+            default:
+                $gender = null;
+        }
+
+        switch($request->yop){
+            case "1年未満":
+                $yop = '1';
+                break;
+            case "1~3年":
+                $yop = '2';
+                break;
+            case "4~10年":
+                $yop = '3';
+                break;
+            case "11年以上":
+                $yop = '4';
+                break;
+            default:
+                $yop = null;
         }
 
         User::create([
-            'name' =>  $request->form['name'],
-            'email' => $request->form['email'],
-            'password' => Hash::make($request->form['password']),
+            'name' =>  $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'gender' => $gender,
+            'yop' => $yop,
         ]);
         
-        return response()->json(['name' => $request->form['name'], 'email' => $request->form['email']]);
+        return response()->json(['name' => $request->name, 'email' => $request->email]);
     }
 }
