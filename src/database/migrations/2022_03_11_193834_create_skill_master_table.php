@@ -17,7 +17,7 @@ class CreateSkillMasterTable extends Migration
             $table->id();
             $table->string('skill');
             $table->string('category');
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 
