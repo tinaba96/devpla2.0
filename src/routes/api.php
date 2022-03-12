@@ -28,4 +28,6 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('/user/auth', [LoginController::class, 'auth']);
 });
 
+Route::get('/signup', [SignupController::class, 'getSignup'])->name('reg');
+
 Route::post('/signup', [SignupController::class, 'postSignup'])->name('index');

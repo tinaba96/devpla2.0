@@ -5,12 +5,12 @@ namespace Database\Seeders;
 use Flynsarmy\CsvSeeder\CsvSeeder;
 use Illuminate\Support\Facades\DB;
 
-class SkillMasterTableSeeder extends CsvSeeder
+class SkillMastersTableSeeder extends CsvSeeder
 {
 
     public function __construct()
     {
-        $this->table = 'skill_master';
+        $this->table = 'skill_masters';
         $this->filename = base_path().'/database/seeders/csvs/skill.csv';
     }
 

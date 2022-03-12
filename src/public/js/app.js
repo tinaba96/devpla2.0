@@ -2299,6 +2299,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2332,7 +2350,8 @@ __webpack_require__.r(__webpack_exports__);
       }],
       requiredRules: [function (v) {
         return !!v || "入力必須です";
-      }]
+      }],
+      skills: {}
     };
   },
   computed: {
@@ -2343,9 +2362,19 @@ __webpack_require__.r(__webpack_exports__);
       return this.password == this.comfirmPassword ? "一致しています" : "一致していません";
     }
   },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/api/signup').then(function (response) {
+      _this.skills = response.data.skills;
+    })["catch"](function (err) {
+      console.log(err.response);
+    });
+  },
   methods: {
     validate: function validate() {
       this.$refs.form.validate();
+      console.log(this.skills);
     },
     reset: function reset() {
       this.$refs.form.reset();
@@ -2354,7 +2383,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$refs.form.resetValidation();
     },
     signup: function signup() {
-      var _this = this;
+      var _this2 = this;
 
       axios.post("/api/signup", {
         name: this.userName,
@@ -2363,8 +2392,8 @@ __webpack_require__.r(__webpack_exports__);
         gender: this.genderValue,
         yop: this.experienceValue
       }).then(function (res) {
-        _this.auth = false;
-        _this.error = res.data.message;
+        _this2.auth = false;
+        _this2.error = res.data.message;
       })["catch"](function (err) {
         console.log(err.response);
       });
@@ -21423,6 +21452,42 @@ var render = function () {
                 ],
                 1
               ),
+              _vm._v(" "),
+              _c("v-col", { attrs: { cols: "2" } }, [_vm._v("スキル")]),
+              _vm._v(" "),
+              _c("v-col", { staticClass: "required", attrs: { cols: "2" } }, [
+                _vm._v("必須"),
+              ]),
+              _vm._v(" "),
+              _c("v-col", { attrs: { cols: "8" } }, [
+                _c(
+                  "div",
+                  { staticClass: "card-body" },
+                  [
+                    _vm._l(_vm.skills, function (skill) {
+                      return [
+                        _c(
+                          "v-checkbox",
+                          {
+                            key: skill.id,
+                            attrs: { label: skill.skill, value: skill },
+                          },
+                          [
+                            _c("span", [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(skill.skill) +
+                                  "\n                    "
+                              ),
+                            ]),
+                          ]
+                        ),
+                      ]
+                    }),
+                  ],
+                  2
+                ),
+              ]),
             ],
             1
           ),

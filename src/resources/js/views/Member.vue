@@ -95,7 +95,25 @@
                         outlined
                     ></v-autocomplete>
                 </v-col>
+                <v-col cols="2">スキル</v-col>
+                <v-col cols="2" class="required">必須</v-col>
+                <v-col cols="8">
+                    <div class="card-body">
+                        <template v-for="skill in skills" >
+                        <v-checkbox
+                        :key="skill.id"
+                        :label="skill.skill"
+                        :value="skill"
+                        >
+                        <span>
+                        {{ skill.skill }}
+                        </span>
+                        </v-checkbox>
+                        </template>
+                    </div>
+                </v-col>
             </v-row>
+
             <v-row>
                 <v-col class="text-center">
                     <v-btn @click="signup">以上の内容で会員登録する</v-btn>
@@ -148,6 +166,7 @@ export default {
                 "パスワードは8文字以上16文字以下",
         ],
         requiredRules: [(v) => !!v || "入力必須です"],
+        skills: {},
     }),
 
     computed: {
@@ -158,10 +177,20 @@ export default {
             return this.password == this.comfirmPassword ? "一致しています":"一致していません"
         },
     },
+    created() {      
+    axios.get('/api/signup')
+      .then((response)=>{
+        this.skills = response.data.skills
+      })
+      .catch((err) => {
+            console.log(err.response);
+      });
+    },
 
     methods: {
         validate() {
             this.$refs.form.validate();
+            console.log(this.skills)
         },
         reset() {
             this.$refs.form.reset();

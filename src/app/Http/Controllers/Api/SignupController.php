@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Response;
+use App\Models\SkillMaster;
 
 class SignupController extends Controller
 {
@@ -27,7 +28,10 @@ class SignupController extends Controller
      */
     public function getSignup()
     {
-        return view('');
+        $skills=SkillMaster::all();
+        return response()->json([
+            'skills' => $skills 
+        ], Response::HTTP_OK);
     }
 
     /**
