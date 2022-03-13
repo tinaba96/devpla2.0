@@ -98,6 +98,25 @@
                 <v-col cols="2">スキル</v-col>
                 <v-col cols="2" class="required">必須</v-col>
                 <v-col cols="8">
+                <v-dialog
+                    v-model="dialog"
+                    width="500"
+                >
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                    color="blue lighten-3"
+                    dark
+                    v-bind="attrs"
+                    v-on="on"
+                    >
+                    ITスキルを選択
+                    </v-btn>
+                </template>
+                <v-card>
+                    <v-card-title class="text-h5 grey lighten-2">
+                    自分のスキルを選んでください。
+                    </v-card-title>
+
                     <div class="card-body">
                         <template v-for="skill in skills" >
                         <v-checkbox
@@ -111,6 +130,22 @@
                         </v-checkbox>
                         </template>
                     </div>
+
+                <v-divider></v-divider>
+
+                <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                    color="primary"
+                    text
+                    @click="dialog = false"
+                >
+                    登録
+                </v-btn>
+                </v-card-actions>
+            </v-card>
+            </v-dialog>
+
                 </v-col>
             </v-row>
 
@@ -166,6 +201,7 @@ export default {
                 "パスワードは8文字以上16文字以下",
         ],
         requiredRules: [(v) => !!v || "入力必須です"],
+        dialog: false,
         skills: {},
     }),
 

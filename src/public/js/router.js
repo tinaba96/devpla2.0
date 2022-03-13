@@ -206,6 +206,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -240,6 +275,7 @@ __webpack_require__.r(__webpack_exports__);
       requiredRules: [function (v) {
         return !!v || "入力必須です";
       }],
+      dialog: false,
       skills: {}
     };
   },
@@ -1361,35 +1397,132 @@ var render = function () {
                 _vm._v("必須"),
               ]),
               _vm._v(" "),
-              _c("v-col", { attrs: { cols: "8" } }, [
-                _c(
-                  "div",
-                  { staticClass: "card-body" },
-                  [
-                    _vm._l(_vm.skills, function (skill) {
-                      return [
-                        _c(
-                          "v-checkbox",
-                          {
-                            key: skill.id,
-                            attrs: { label: skill.skill, value: skill },
-                          },
-                          [
-                            _c("span", [
-                              _vm._v(
-                                "\n                    " +
-                                  _vm._s(skill.skill) +
-                                  "\n                    "
+              _c(
+                "v-col",
+                { attrs: { cols: "8" } },
+                [
+                  _c(
+                    "v-dialog",
+                    {
+                      attrs: { width: "500" },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "activator",
+                          fn: function (ref) {
+                            var on = ref.on
+                            var attrs = ref.attrs
+                            return [
+                              _c(
+                                "v-btn",
+                                _vm._g(
+                                  _vm._b(
+                                    {
+                                      attrs: {
+                                        color: "blue lighten-3",
+                                        dark: "",
+                                      },
+                                    },
+                                    "v-btn",
+                                    attrs,
+                                    false
+                                  ),
+                                  on
+                                ),
+                                [
+                                  _vm._v(
+                                    "\n                ITスキルを選択\n                "
+                                  ),
+                                ]
                               ),
-                            ]),
-                          ]
-                        ),
-                      ]
-                    }),
-                  ],
-                  2
-                ),
-              ]),
+                            ]
+                          },
+                        },
+                      ]),
+                      model: {
+                        value: _vm.dialog,
+                        callback: function ($$v) {
+                          _vm.dialog = $$v
+                        },
+                        expression: "dialog",
+                      },
+                    },
+                    [
+                      _vm._v(" "),
+                      _c(
+                        "v-card",
+                        [
+                          _c(
+                            "v-card-title",
+                            { staticClass: "text-h5 grey lighten-2" },
+                            [
+                              _vm._v(
+                                "\n                自分のスキルを選んでください。\n                "
+                              ),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "card-body" },
+                            [
+                              _vm._l(_vm.skills, function (skill) {
+                                return [
+                                  _c(
+                                    "v-checkbox",
+                                    {
+                                      key: skill.id,
+                                      attrs: {
+                                        label: skill.skill,
+                                        value: skill,
+                                      },
+                                    },
+                                    [
+                                      _c("span", [
+                                        _vm._v(
+                                          "\n                    " +
+                                            _vm._s(skill.skill) +
+                                            "\n                    "
+                                        ),
+                                      ]),
+                                    ]
+                                  ),
+                                ]
+                              }),
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("v-divider"),
+                          _vm._v(" "),
+                          _c(
+                            "v-card-actions",
+                            [
+                              _c("v-spacer"),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { color: "primary", text: "" },
+                                  on: {
+                                    click: function ($event) {
+                                      _vm.dialog = false
+                                    },
+                                  },
+                                },
+                                [_vm._v("\n                登録\n            ")]
+                              ),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
             ],
             1
           ),
