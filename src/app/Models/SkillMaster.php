@@ -15,8 +15,8 @@ class SkillMaster extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'skill',
-        'category'
+        'name',
+        'category_name'
     ];
 }
 
