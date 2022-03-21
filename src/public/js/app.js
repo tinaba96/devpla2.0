@@ -2583,6 +2583,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "skill",
   components: {},
@@ -21986,6 +22003,26 @@ var render = function () {
               )
             : _vm._e(),
         ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "mt-10" },
+        _vm._l(_vm.selectedSkills, function (skill, num) {
+          return _c("v-chip", {
+            key: num,
+            staticClass: "mr-2 mb-2 font-weight-bold",
+            attrs: {
+              id: "chip",
+              small: "",
+              close: "",
+              outlined: "",
+              color: "primary",
+            },
+            domProps: { textContent: _vm._s(skill.name) },
+          })
+        }),
         1
       ),
     ],

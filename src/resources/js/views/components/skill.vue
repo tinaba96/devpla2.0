@@ -69,6 +69,23 @@
     </v-card-actions>
     </v-card>
     </v-dialog>
+
+
+    <div
+        class="mt-10"
+        >
+    <v-chip
+        v-for="skill, num) in selectedSkills"
+        id="chip"
+        :key="num"
+        small
+        close
+        outlined
+        color="primary"
+        class="mr-2 mb-2 font-weight-bold"
+        v-text="skill.name"
+        />
+    </div>
 </div>
 </template>
 
