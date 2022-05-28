@@ -2143,8 +2143,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -21101,46 +21099,43 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
-    { staticClass: "mx-auto p-2", staticStyle: { "max-width": "600px" } },
+    "v-container",
     [
       _c(
-        "v-card",
-        {
-          attrs: {
-            "no-body": "",
-            header: "ユーザ情報",
-            "header-bg-variant": "primary",
-            "header-text-variant": "white",
-          },
-        },
+        "v-row",
         [
-          _vm.auth
-            ? _c(
-                "v-card-text",
-                { staticClass: "p-2" },
-                [
-                  _c("label", [_vm._v("Name")]),
-                  _vm._v(" "),
-                  _c("v-list-group-item", { staticClass: "mv-2" }, [
-                    _vm._v(_vm._s(_vm.user.name)),
-                  ]),
-                  _vm._v(" "),
-                  _c("label", [_vm._v("Email")]),
-                  _vm._v(" "),
-                  _c("v-list-group-item", [_vm._v(_vm._s(_vm.user.email))]),
-                ],
-                1
-              )
-            : _c("v-card-text", { staticClass: "p-2 text-danger" }, [
-                _vm._v(
-                  "\n      " +
-                    _vm._s(_vm.error.status) +
-                    " " +
-                    _vm._s(_vm.error.statusText) +
-                    "\n    "
-                ),
-              ]),
+          _c("v-col", { staticClass: "text-center" }, [
+            _c("h1", [_vm._v("プロフィール")]),
+          ]),
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-row",
+        { attrs: { justify: "center" } },
+        [
+          _c("v-col", { attrs: { cols: "4" } }, [_vm._v("ユーザー名")]),
+          _vm._v(" "),
+          _c("v-col", { attrs: { cols: "8" } }, [
+            _vm._v(_vm._s(_vm.user.name)),
+          ]),
+          _vm._v(" "),
+          _c("v-col", { attrs: { cols: "4" } }, [_vm._v("メールアドレス")]),
+          _vm._v(" "),
+          _c("v-col", { attrs: { cols: "8" } }, [
+            _vm._v(_vm._s(_vm.user.email)),
+          ]),
+          _vm._v(" "),
+          _c("v-col", { attrs: { cols: "4" } }, [_vm._v("性別")]),
+          _vm._v(" "),
+          _c("v-col", { attrs: { cols: "8" } }, [
+            _vm._v(_vm._s(_vm.user.gender)),
+          ]),
+          _vm._v(" "),
+          _c("v-col", { attrs: { cols: "4" } }, [_vm._v("プログラミング経験")]),
+          _vm._v(" "),
+          _c("v-col", { attrs: { cols: "8" } }, [_vm._v(_vm._s(_vm.user.yop))]),
         ],
         1
       ),

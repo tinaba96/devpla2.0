@@ -1,25 +1,23 @@
 <template>
-<div class="mx-auto p-2" style="max-width: 600px;">
-
-  <v-card
-    no-body
-    header="ユーザ情報"
-    header-bg-variant="primary"
-    header-text-variant="white"
-  >
-    <v-card-text v-if="auth" class="p-2">
-      <label>Name</label>
-      <v-list-group-item class="mv-2">{{user.name}}</v-list-group-item>
-      <label>Email</label>
-      <v-list-group-item>{{user.email}}</v-list-group-item>
-    </v-card-text>
-    <v-card-text v-else class="p-2 text-danger">
-      {{error.status}} {{error.statusText}}
-    </v-card-text>
-  </v-card>
-
-</div>
+    <v-container>
+        <v-row>
+            <v-col class="text-center">
+                <h1>プロフィール</h1>
+            </v-col>
+        </v-row>
+            <v-row justify="center">
+                <v-col cols="4">ユーザー名</v-col>
+                <v-col cols="8">{{user.name}}</v-col>
+                <v-col cols="4">メールアドレス</v-col>
+                <v-col cols="8">{{user.email}}</v-col>
+                <v-col cols="4">性別</v-col>
+                <v-col cols="8">{{user.gender}}</v-col>
+                <v-col cols="4">プログラミング経験</v-col>
+                <v-col cols="8">{{user.yop}}</v-col>
+            </v-row>
+    </v-container>
 </template>
+
 
 <script>
   export default {
