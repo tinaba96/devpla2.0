@@ -21,6 +21,6 @@ class LpController extends Controller
     // }
 
     public function lp(){
-        return view('landing-page');
+        return view('Laravel_page/landing-page');
     }
 }
