@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SkillMaster extends Model
+class User_skill extends Model
 {
     use HasFactory;
 
@@ -15,13 +15,8 @@ class SkillMaster extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'category_name'
+        'user_id',
+        'skill_id',
+        'yoe_range'
     ];
-
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
 }
-

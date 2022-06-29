@@ -31,8 +31,25 @@
             :key="skill.id"
             :label="skill.name"
             :value="skill"
+            @click="yoeModal=true; showYoeSelection(skill)"
             >
             </v-checkbox>
+
+            <div
+                v-if="yoeModal && selectedYoe === skill "
+                max-width="60%"
+                style="z-index:2;"
+            >
+                        <v-btn
+                            v-for="(yoe, index) in experience"
+                            @click="yoeModal=false; addYoe(yoe)"
+                            :key="index"
+                            >
+                            {{ yoe }}
+                        </v-btn>
+            <br>
+            <br>
+            </div>
             </template>
         </div>
 
@@ -46,7 +63,7 @@
             cols="12"
         >
             <v-chip
-                v-for="skill, num) in selectedSkills"
+                v-for="(skill, num) in selectedSkills"
                 id="chip"
                 :key="num"
                 small
@@ -54,8 +71,10 @@
                 outlined
                 color="primary"
                 class="mr-2 mb-2 font-weight-bold"
-                v-text="skill.name"
-                />
+                >
+                {{ skill.name }}
+                【{{ skill.yoe }}】
+            </v-chip>
         </v-col>
     </v-row>
             <v-btn
@@ -75,7 +94,7 @@
         class="mt-10"
         >
     <v-chip
-        v-for="skill, num) in selectedSkills"
+        v-for="(skill, num) in selectedSkills"
         id="chip"
         :key="num"
         small
@@ -83,8 +102,10 @@
         outlined
         color="primary"
         class="mr-2 mb-2 font-weight-bold"
-        v-text="skill.name"
-        />
+        >
+        {{ skill.name }}
+        【{{ skill.yoe }}】
+    </v-chip>
     </div>
 </div>
 </template>
@@ -94,21 +115,30 @@ export default {
   name:"skill",
   components: {},
   props: {
-      skills: null
+      skills: null,
   },
 //   data: function () {
 //     return {}
 //   },
     data: () => ({
+        selectedYoe: null,
         dialog: false,
-        selectedSkills: [],
+        yoeModal: false,
         experience: ["自己学習", "1年以上", "3年以上", "7年以上"], 
+        selectedSkills: []
     }),
     methods: {
         choose() {
-            console.log(this.selectedSkills)
+            // console.log(this.selectedSkills)
+            this.$emit("selectedSkills", this.selectedSkills)
+        },
+        showYoeSelection(skill) {
+            this.selectedYoe = skill
+        },
+        addYoe(yoe) {
+            this.selectedSkills.slice(-1)[0]['yoe'] = yoe
+            // console.log(this.selectedSkills)
         }
-
     }
 }
 </script>  

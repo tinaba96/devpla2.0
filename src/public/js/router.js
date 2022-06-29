@@ -235,7 +235,8 @@ __webpack_require__.r(__webpack_exports__);
         return !!v || "入力必須です";
       }],
       dialog: false,
-      skills: {}
+      skills: {},
+      selectedSkills: []
     };
   },
   computed: {
@@ -256,9 +257,11 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
+    getSelectedSkills: function getSelectedSkills(value) {
+      this.selectedSkills = value;
+    },
     validate: function validate() {
       this.$refs.form.validate();
-      console.log(this.skills);
     },
     reset: function reset() {
       this.$refs.form.reset();
@@ -274,7 +277,8 @@ __webpack_require__.r(__webpack_exports__);
         email: this.email,
         password: this.password,
         gender: this.genderValue,
-        yop: this.experienceValue
+        yop: this.experienceValue,
+        selectedSkills: this.selectedSkills
       }).then(function (res) {
         _this2.auth = false;
         _this2.error = res.data.message;
@@ -487,6 +491,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "skill",
   components: {},
@@ -498,14 +523,23 @@ __webpack_require__.r(__webpack_exports__);
   //   },
   data: function data() {
     return {
+      selectedYoe: null,
       dialog: false,
-      selectedSkills: [],
-      experience: ["自己学習", "1年以上", "3年以上", "7年以上"]
+      yoeModal: false,
+      experience: ["自己学習", "1年以上", "3年以上", "7年以上"],
+      selectedSkills: []
     };
   },
   methods: {
     choose: function choose() {
-      console.log(this.selectedSkills);
+      // console.log(this.selectedSkills)
+      this.$emit("selectedSkills", this.selectedSkills);
+    },
+    showYoeSelection: function showYoeSelection(skill) {
+      this.selectedYoe = skill;
+    },
+    addYoe: function addYoe(yoe) {
+      this.selectedSkills.slice(-1)[0]['yoe'] = yoe; // console.log(this.selectedSkills)
     }
   }
 });
@@ -1554,7 +1588,12 @@ var render = function () {
               _c(
                 "v-col",
                 { attrs: { cols: "8" } },
-                [_c("Skill", { attrs: { skills: _vm.skills } })],
+                [
+                  _c("Skill", {
+                    attrs: { skills: _vm.skills },
+                    on: { selectedSkills: _vm.getSelectedSkills },
+                  }),
+                ],
                 1
               ),
             ],
@@ -1831,6 +1870,12 @@ var render = function () {
                           _c("v-checkbox", {
                             key: skill.id,
                             attrs: { label: skill.name, value: skill },
+                            on: {
+                              click: function ($event) {
+                                _vm.yoeModal = true
+                                _vm.showYoeSelection(skill)
+                              },
+                            },
                             model: {
                               value: _vm.selectedSkills,
                               callback: function ($$v) {
@@ -1839,6 +1884,44 @@ var render = function () {
                               expression: "selectedSkills",
                             },
                           }),
+                          _vm._v(" "),
+                          _vm.yoeModal && _vm.selectedYoe === skill
+                            ? _c(
+                                "div",
+                                {
+                                  staticStyle: { "z-index": "2" },
+                                  attrs: { "max-width": "60%" },
+                                },
+                                [
+                                  _vm._l(_vm.experience, function (yoe, index) {
+                                    return _c(
+                                      "v-btn",
+                                      {
+                                        key: index,
+                                        on: {
+                                          click: function ($event) {
+                                            _vm.yoeModal = false
+                                            _vm.addYoe(yoe)
+                                          },
+                                        },
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                            " +
+                                            _vm._s(yoe) +
+                                            "\n                        "
+                                        ),
+                                      ]
+                                    )
+                                  }),
+                                  _vm._v(" "),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c("br"),
+                                ],
+                                2
+                              )
+                            : _vm._e(),
                         ]
                       }),
                     ],
@@ -1859,18 +1942,29 @@ var render = function () {
                             "v-col",
                             { attrs: { cols: "12" } },
                             _vm._l(_vm.selectedSkills, function (skill, num) {
-                              return _c("v-chip", {
-                                key: num,
-                                staticClass: "mr-2 mb-2 font-weight-bold",
-                                attrs: {
-                                  id: "chip",
-                                  small: "",
-                                  close: "",
-                                  outlined: "",
-                                  color: "primary",
+                              return _c(
+                                "v-chip",
+                                {
+                                  key: num,
+                                  staticClass: "mr-2 mb-2 font-weight-bold",
+                                  attrs: {
+                                    id: "chip",
+                                    small: "",
+                                    close: "",
+                                    outlined: "",
+                                    color: "primary",
+                                  },
                                 },
-                                domProps: { textContent: _vm._s(skill.name) },
-                              })
+                                [
+                                  _vm._v(
+                                    "\n                " +
+                                      _vm._s(skill.name) +
+                                      "\n                【" +
+                                      _vm._s(skill.yoe) +
+                                      "】\n            "
+                                  ),
+                                ]
+                              )
                             }),
                             1
                           ),
@@ -1906,18 +2000,29 @@ var render = function () {
         "div",
         { staticClass: "mt-10" },
         _vm._l(_vm.selectedSkills, function (skill, num) {
-          return _c("v-chip", {
-            key: num,
-            staticClass: "mr-2 mb-2 font-weight-bold",
-            attrs: {
-              id: "chip",
-              small: "",
-              close: "",
-              outlined: "",
-              color: "primary",
+          return _c(
+            "v-chip",
+            {
+              key: num,
+              staticClass: "mr-2 mb-2 font-weight-bold",
+              attrs: {
+                id: "chip",
+                small: "",
+                close: "",
+                outlined: "",
+                color: "primary",
+              },
             },
-            domProps: { textContent: _vm._s(skill.name) },
-          })
+            [
+              _vm._v(
+                "\n        " +
+                  _vm._s(skill.name) +
+                  "\n        【" +
+                  _vm._s(skill.yoe) +
+                  "】\n    "
+              ),
+            ]
+          )
         }),
         1
       ),

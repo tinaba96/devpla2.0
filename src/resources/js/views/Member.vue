@@ -98,7 +98,7 @@
                 <v-col cols="2">スキル</v-col>
                 <v-col cols="2" class="required">必須</v-col>
                 <v-col cols="8">
-                <Skill :skills="skills" />               
+                <Skill :skills="skills" @selectedSkills="getSelectedSkills" />               
 
                 </v-col>
             </v-row>
@@ -161,6 +161,7 @@ export default {
         requiredRules: [(v) => !!v || "入力必須です"],
         dialog: false,
         skills: {},
+        selectedSkills: []
     }),
 
     computed: {
@@ -182,9 +183,11 @@ export default {
     },
 
     methods: {
+        getSelectedSkills(value) {
+            this.selectedSkills = value
+        },
         validate() {
             this.$refs.form.validate();
-            console.log(this.skills)
         },
         reset() {
             this.$refs.form.reset();
@@ -200,6 +203,7 @@ export default {
                     password: this.password,
                     gender: this.genderValue,
                     yop: this.experienceValue,
+                    selectedSkills: this.selectedSkills
                 })
                 .then((res) => {
                     this.auth = false;
