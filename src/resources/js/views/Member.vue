@@ -95,7 +95,14 @@
                         outlined
                     ></v-autocomplete>
                 </v-col>
+                <v-col cols="2">スキル</v-col>
+                <v-col cols="2" class="required">必須</v-col>
+                <v-col cols="8">
+                <Skill :skills="skills" @selectedSkills="getSelectedSkills" />               
+
+                </v-col>
             </v-row>
+
             <v-row>
                 <v-col class="text-center">
                     <v-btn @click="signup">以上の内容で会員登録する</v-btn>
@@ -118,7 +125,11 @@
 </template>
 
 <script>
+import Skill from './components/skill'
 export default {
+    components: {
+        Skill,
+    },
     data: () => ({
         valid: true,
         showPassword: false,
@@ -148,6 +159,9 @@ export default {
                 "パスワードは8文字以上16文字以下",
         ],
         requiredRules: [(v) => !!v || "入力必須です"],
+        dialog: false,
+        skills: {},
+        selectedSkills: []
     }),
 
     computed: {
@@ -158,8 +172,20 @@ export default {
             return this.password == this.comfirmPassword ? "一致しています":"一致していません"
         },
     },
+    created() {      
+    axios.get('/api/signup')
+      .then((response)=>{
+        this.skills = response.data.skills
+      })
+      .catch((err) => {
+            console.log(err.response);
+      });
+    },
 
     methods: {
+        getSelectedSkills(value) {
+            this.selectedSkills = value
+        },
         validate() {
             this.$refs.form.validate();
         },
@@ -177,6 +203,7 @@ export default {
                     password: this.password,
                     gender: this.genderValue,
                     yop: this.experienceValue,
+                    selectedSkills: this.selectedSkills
                 })
                 .then((res) => {
                     this.auth = false;

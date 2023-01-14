@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\User;
+use App\Models\User_skill;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Response;
+use App\Models\SkillMaster;
+use Illuminate\Support\Facades\Auth;
 
 class SignupController extends Controller
 {
@@ -27,7 +30,10 @@ class SignupController extends Controller
      */
     public function getSignup()
     {
-        return view('');
+        $skills=SkillMaster::all();
+        return response()->json([
+            'skills' => $skills 
+        ], Response::HTTP_OK);
     }
 
     /**
@@ -82,6 +88,31 @@ class SignupController extends Controller
             'gender' => $gender,
             'yop' => $yop,
         ]);
+
+        foreach($request->selectedSkills as $selectedSkill){
+            switch($selectedSkill["yoe"]){
+                case "自己学習":
+                    $yoe = '1';
+                    break;
+                case "1年以上":
+                    $yoe = '2';
+                    break;
+                case "3年以上":
+                    $yoe = '3';
+                    break;
+                case "7年以上":
+                    $yoe = '4';
+                    break;
+                default:
+                    $yoe = null;
+            }
+
+            User_skill::create([
+                'user_id' => User::get()->count(),
+                'skill_id' => $selectedSkill["id"],
+                'yoe_range' => $yoe
+            ]);
+        }
         
         return response()->json(['name' => $request->name, 'email' => $request->email]);
     }

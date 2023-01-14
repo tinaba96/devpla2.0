@@ -67,6 +67,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _components_skill__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/skill */ "./resources/js/views/components/skill.vue");
 //
 //
 //
@@ -186,7 +187,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    Skill: _components_skill__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       valid: true,
@@ -219,7 +231,10 @@ __webpack_require__.r(__webpack_exports__);
       }],
       requiredRules: [function (v) {
         return !!v || "入力必須です";
-      }]
+      }],
+      dialog: false,
+      skills: {},
+      selectedSkills: []
     };
   },
   computed: {
@@ -230,7 +245,19 @@ __webpack_require__.r(__webpack_exports__);
       return this.password == this.comfirmPassword ? "一致しています" : "一致していません";
     }
   },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/api/signup').then(function (response) {
+      _this.skills = response.data.skills;
+    })["catch"](function (err) {
+      console.log(err.response);
+    });
+  },
   methods: {
+    getSelectedSkills: function getSelectedSkills(value) {
+      this.selectedSkills = value;
+    },
     validate: function validate() {
       this.$refs.form.validate();
     },
@@ -241,17 +268,18 @@ __webpack_require__.r(__webpack_exports__);
       this.$refs.form.resetValidation();
     },
     signup: function signup() {
-      var _this = this;
+      var _this2 = this;
 
       axios.post("/api/signup", {
         name: this.userName,
         email: this.email,
         password: this.password,
         gender: this.genderValue,
-        yop: this.experienceValue
+        yop: this.experienceValue,
+        selectedSkills: this.selectedSkills
       }).then(function (res) {
-        _this.auth = false;
-        _this.error = res.data.message;
+        _this2.auth = false;
+        _this2.error = res.data.message;
       })["catch"](function (err) {
         console.log(err.response);
       });
@@ -354,6 +382,162 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         console.log(err.response);
       });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/components/skill.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/components/skill.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "skill",
+  components: {},
+  props: {
+    skills: null
+  },
+  //   data: function () {
+  //     return {}
+  //   },
+  data: function data() {
+    return {
+      selectedYoe: null,
+      dialog: false,
+      yoeModal: false,
+      experience: ["自己学習", "1年以上", "3年以上", "7年以上"],
+      selectedSkills: []
+    };
+  },
+  methods: {
+    choose: function choose() {
+      // console.log(this.selectedSkills)
+      this.$emit("selectedSkills", this.selectedSkills);
+    },
+    showYoeSelection: function showYoeSelection(skill) {
+      this.selectedYoe = skill;
+    },
+    addYoe: function addYoe(yoe) {
+      this.selectedSkills.slice(-1)[0]['yoe'] = yoe; // console.log(this.selectedSkills)
     }
   }
 });
@@ -881,6 +1065,44 @@ component.options.__file = "resources/js/views/SignIn.vue"
 
 /***/ }),
 
+/***/ "./resources/js/views/components/skill.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/views/components/skill.vue ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _skill_vue_vue_type_template_id_4d277717___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./skill.vue?vue&type=template&id=4d277717& */ "./resources/js/views/components/skill.vue?vue&type=template&id=4d277717&");
+/* harmony import */ var _skill_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./skill.vue?vue&type=script&lang=js& */ "./resources/js/views/components/skill.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _skill_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _skill_vue_vue_type_template_id_4d277717___WEBPACK_IMPORTED_MODULE_0__.render,
+  _skill_vue_vue_type_template_id_4d277717___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/components/skill.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/views/Account.vue?vue&type=script&lang=js&":
 /*!*****************************************************************!*\
   !*** ./resources/js/views/Account.vue?vue&type=script&lang=js& ***!
@@ -923,6 +1145,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SignIn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SignIn.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/SignIn.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SignIn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/components/skill.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/views/components/skill.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_skill_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./skill.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/components/skill.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_skill_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -982,6 +1219,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SignIn_vue_vue_type_template_id_4cda74a1___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SignIn_vue_vue_type_template_id_4cda74a1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SignIn.vue?vue&type=template&id=4cda74a1& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/SignIn.vue?vue&type=template&id=4cda74a1&");
+
+
+/***/ }),
+
+/***/ "./resources/js/views/components/skill.vue?vue&type=template&id=4d277717&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/views/components/skill.vue?vue&type=template&id=4d277717& ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_skill_vue_vue_type_template_id_4d277717___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_skill_vue_vue_type_template_id_4d277717___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_skill_vue_vue_type_template_id_4d277717___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./skill.vue?vue&type=template&id=4d277717& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/components/skill.vue?vue&type=template&id=4d277717&");
 
 
 /***/ }),
@@ -1320,6 +1573,24 @@ var render = function () {
                 ],
                 1
               ),
+              _vm._v(" "),
+              _c("v-col", { attrs: { cols: "2" } }, [_vm._v("スキル")]),
+              _vm._v(" "),
+              _c("v-col", { staticClass: "required", attrs: { cols: "2" } }, [
+                _vm._v("必須"),
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                { attrs: { cols: "8" } },
+                [
+                  _c("Skill", {
+                    attrs: { skills: _vm.skills },
+                    on: { selectedSkills: _vm.getSelectedSkills },
+                  }),
+                ],
+                1
+              ),
             ],
             1
           ),
@@ -1495,6 +1766,261 @@ var render = function () {
             ],
             1
           ),
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/components/skill.vue?vue&type=template&id=4d277717&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/components/skill.vue?vue&type=template&id=4d277717& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "skill" } },
+    [
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          scopedSlots: _vm._u([
+            {
+              key: "activator",
+              fn: function (ref) {
+                var on = ref.on
+                var attrs = ref.attrs
+                return [
+                  _c(
+                    "v-btn",
+                    _vm._g(
+                      _vm._b(
+                        { attrs: { color: "blue lighten-3", dark: "" } },
+                        "v-btn",
+                        attrs,
+                        false
+                      ),
+                      on
+                    ),
+                    [_vm._v("\n        ITスキルを選択\n        ")]
+                  ),
+                ]
+              },
+            },
+          ]),
+          model: {
+            value: _vm.dialog,
+            callback: function ($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog",
+          },
+        },
+        [
+          _vm._v(" "),
+          _vm.dialog
+            ? _c(
+                "v-card",
+                [
+                  _c(
+                    "v-card-title",
+                    { staticClass: "text-h5 grey lighten-2" },
+                    [
+                      _vm._v(
+                        "\n        自分のスキルを選んでください。\n        "
+                      ),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "card-body" },
+                    [
+                      _vm._l(_vm.skills, function (skill) {
+                        return [
+                          _c("span", [
+                            _vm._v(
+                              "\n            " +
+                                _vm._s(skill.category_name) +
+                                "\n            "
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("v-checkbox", {
+                            key: skill.id,
+                            attrs: { label: skill.name, value: skill },
+                            on: {
+                              click: function ($event) {
+                                _vm.yoeModal = true
+                                _vm.showYoeSelection(skill)
+                              },
+                            },
+                            model: {
+                              value: _vm.selectedSkills,
+                              callback: function ($$v) {
+                                _vm.selectedSkills = $$v
+                              },
+                              expression: "selectedSkills",
+                            },
+                          }),
+                          _vm._v(" "),
+                          _vm.yoeModal && _vm.selectedYoe === skill
+                            ? _c(
+                                "div",
+                                {
+                                  staticStyle: { "z-index": "2" },
+                                  attrs: { "max-width": "60%" },
+                                },
+                                [
+                                  _vm._l(_vm.experience, function (yoe, index) {
+                                    return _c(
+                                      "v-btn",
+                                      {
+                                        key: index,
+                                        on: {
+                                          click: function ($event) {
+                                            _vm.yoeModal = false
+                                            _vm.addYoe(yoe)
+                                          },
+                                        },
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                            " +
+                                            _vm._s(yoe) +
+                                            "\n                        "
+                                        ),
+                                      ]
+                                    )
+                                  }),
+                                  _vm._v(" "),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c("br"),
+                                ],
+                                2
+                              )
+                            : _vm._e(),
+                        ]
+                      }),
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c("v-divider"),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-actions",
+                    [
+                      _c("v-spacer"),
+                      _vm._v(" "),
+                      _c(
+                        "v-row",
+                        [
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12" } },
+                            _vm._l(_vm.selectedSkills, function (skill, num) {
+                              return _c(
+                                "v-chip",
+                                {
+                                  key: num,
+                                  staticClass: "mr-2 mb-2 font-weight-bold",
+                                  attrs: {
+                                    id: "chip",
+                                    small: "",
+                                    close: "",
+                                    outlined: "",
+                                    color: "primary",
+                                  },
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                " +
+                                      _vm._s(skill.name) +
+                                      "\n                【" +
+                                      _vm._s(skill.yoe) +
+                                      "】\n            "
+                                  ),
+                                ]
+                              )
+                            }),
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "primary", text: "" },
+                          on: {
+                            click: function ($event) {
+                              _vm.dialog = false
+                              _vm.choose()
+                            },
+                          },
+                        },
+                        [_vm._v("\n                登録\n            ")]
+                      ),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              )
+            : _vm._e(),
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "mt-10" },
+        _vm._l(_vm.selectedSkills, function (skill, num) {
+          return _c(
+            "v-chip",
+            {
+              key: num,
+              staticClass: "mr-2 mb-2 font-weight-bold",
+              attrs: {
+                id: "chip",
+                small: "",
+                close: "",
+                outlined: "",
+                color: "primary",
+              },
+            },
+            [
+              _vm._v(
+                "\n        " +
+                  _vm._s(skill.name) +
+                  "\n        【" +
+                  _vm._s(skill.yoe) +
+                  "】\n    "
+              ),
+            ]
+          )
+        }),
+        1
+      ),
     ],
     1
   )
