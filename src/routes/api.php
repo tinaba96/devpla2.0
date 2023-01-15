@@ -21,8 +21,13 @@ use App\Http\Controllers\Api\SignupController;
 // });
 
 Route::post('/user/login', [LoginController::class, 'login']);
+
 Route::post('/user/logout', [LoginController::class, 'logout']);
+
 Route::middleware('auth:sanctum')->group(function(){
     Route::get('/user/auth', [LoginController::class, 'auth']);
 });
+
+Route::get('/signup', [SignupController::class, 'getSignup'])->name('reg');
+
 Route::post('/signup', [SignupController::class, 'postSignup'])->name('index');

@@ -21,3 +21,14 @@ mix
   .css('resources/css/app.css', 'public/css')
   .version()
   .vue()   
+  // browserSyncの設定
+  .browserSync({
+  files: [
+      'resources/**/*',
+      'app/**/*',
+      'config/**/*',
+      'routes/**/*',
+      'public/**/*'
+  ],
+  proxy: 'http://localhost:1080',
+  });

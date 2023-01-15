@@ -3,9 +3,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Login from './components/Login.vue'
-import Account from './components/Account.vue'
-import SignUp from './components/SignUp.vue'
+import SignIn from './views/SignIn.vue'
+import Account from './views/Account.vue'
+import Member from './views/Member.vue'
 
 Vue.use(VueRouter)
 
@@ -13,9 +13,9 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     {
-      path: '/user/login',
-      name: 'login',
-      component: Login,
+      path: '/user/signin',
+      name: 'signin',
+      component: SignIn,
     },
     {
       path: '/user/account',
@@ -23,9 +23,9 @@ const router = new VueRouter({
       component: Account,
     },
     {
-      path: '/signup',
-      name: 'signup',
-      component: SignUp,
+      path: '/member',
+      name: 'member',
+      component: Member,
     },
   ]
 })

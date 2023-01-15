@@ -1,5 +1,5 @@
 <template>
-  <v-card class="d-flex justify-space-around mb-6" width="400px">
+  <v-card width="400px" class="mx-auto mt-5">
     <v-card-title>
       <h3>ログイン画面</h3>
     </v-card-title>
@@ -20,16 +20,15 @@
         />
         <v-row class="justify-center">
           <v-btn @click="login" variant="primary" class="ma-5">ログイン</v-btn>
-          <v-btn class="ma-5"><router-link to="/signup">新規会員登録</router-link></v-btn>
+          <v-btn class="ma-5"><router-link to="/user/account">アカウント登録</router-link></v-btn>
         </v-row>
         <br>
-          <p>登録していない方はこちら → </p>
       </v-form>
     </v-card-text>
     <v-card-text v-else>
       <p>ログインしています</p>
       <v-button @click="logout" class="float-right">ログアウト</v-button>
-    </v-card-text>    
+    </v-card-text>
   </v-card>
 </template>
 
@@ -37,6 +36,7 @@
   export default {
     data() {
       return {
+        showPassword: false,
         form: {
           email: '',
           password: '',
