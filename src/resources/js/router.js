@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+import Home from './views/Home.vue'
 import SignIn from './views/SignIn.vue'
 import Account from './views/Account.vue'
 import Member from './views/Member.vue'
@@ -12,6 +13,11 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   mode: 'history',
   routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: Home,
+    },
     {
       path: '/user/signin',
       name: 'signin',
