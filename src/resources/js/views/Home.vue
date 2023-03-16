@@ -81,7 +81,26 @@
         {
           title: 'ネーム1',
           text: 'テキス1トテキスト1テキスト1テキスト1テキスト1。',
-          img: "https://picsum.photos/id/20/1920/1080?blur=5",
+          img: '../../images/fNews.png',
+          link: 'https://?????????',
+          description: 'ボタンの中身',
+        },        {
+          title: 'Devpla',
+          text: 'エンジニアのマッチングプラットフォーム',
+          img: '../../images/devpla.png',
+          link: 'https://?????????',
+          description: 'ボタンの中身',
+        },        {
+          title: 'ネーム3',
+          text: 'テキス3トテキスト3テキスト3テキスト3テキスト3。',
+          img: '../../images/fNews.png',
+          link: 'https://?????????',
+          description: 'ボタンの中身',
+        },
+        {
+          title: 'ネーム1',
+          text: 'テキス1トテキスト1テキスト1テキスト1テキスト1。',
+          img: '../../images/fNews.png',
           link: 'https://?????????',
           description: 'ボタンの中身',
         },        {
@@ -106,45 +125,26 @@
         },        {
           title: 'ネーム2',
           text: 'テキス2トテキスト2テキスト2テキスト2テキスト2。',
-          img: "https://picsum.photos/id/20/1920/1080?blur=5",
+          img: '../../images/gunnersNews.png',
           link: 'https://?????????',
           description: 'ボタンの中身',
         },        {
           title: 'ネーム3',
           text: 'テキス3トテキスト3テキスト3テキスト3テキスト3。',
-          img: "https://picsum.photos/id/20/1920/1080?blur=5",
+          img: '../../images/gunnersNews.png',
           link: 'https://?????????',
           description: 'ボタンの中身',
         },
         {
           title: 'ネーム1',
           text: 'テキス1トテキスト1テキスト1テキスト1テキスト1。',
-          img: "https://picsum.photos/id/20/1920/1080?blur=5",
+          img: '../../images/fNews.png',
           link: 'https://?????????',
           description: 'ボタンの中身',
         },        {
           title: 'ネーム2',
           text: 'テキス2トテキスト2テキスト2テキスト2テキスト2。',
-          img: "https://picsum.photos/id/20/1920/1080?blur=5",
-          link: 'https://?????????',
-          description: 'ボタンの中身',
-        },        {
-          title: 'ネーム3',
-          text: 'テキス3トテキスト3テキスト3テキスト3テキスト3。',
-          img: "https://picsum.photos/id/20/1920/1080?blur=5",
-          link: 'https://?????????',
-          description: 'ボタンの中身',
-        },
-        {
-          title: 'ネーム1',
-          text: 'テキス1トテキスト1テキスト1テキスト1テキスト1。',
-          img: "https://picsum.photos/id/20/1920/1080?blur=5",
-          link: 'https://?????????',
-          description: 'ボタンの中身',
-        },        {
-          title: 'ネーム2',
-          text: 'テキス2トテキスト2テキスト2テキスト2テキスト2。',
-          img: "https://picsum.photos/id/20/1920/1080?blur=5",
+          img: '../../images/fNews.png',
           link: 'https://?????????',
           description: 'ボタンの中身',
         }
