@@ -41,19 +41,23 @@ Devpla2.0 has been developed by using Vue.js for Fronend and Laravel for Backend
     ```
     [Reference](http://vdeep.net/laravel-git-clone)
 
-【動作確認時、ローカルサーバーにアクセスしたが　Http500が表示されたときの対応】
-1. laravelプロジェクト配下に.envが無い場合、以下のコマンドで.envファイル作成
+【In case of having 500 http error】
+1. create .env file under `app` directory in laravel
     
-    コマンド：cp .env.example .env
+    ```
+    cp .env.example .env
+    ```
 
 
-【ローカルホストにアクセスした際に、No application encryption key has been specified と表示された場合...】
-1. appコンテナに入り、下記のコマンド入力
+【Facing `No application encryption key has been specified` when you access to localhost】
+1. go inside app container, run
 
-    コマンド：php artisan key:generate
+    ```
+    php artisan key:generate
+    ```
 
 
-【vueのインストール】
+【Install Vue】
 1. Install npm
     ```
     npm install
@@ -65,12 +69,13 @@ Devpla2.0 has been developed by using Vue.js for Fronend and Laravel for Backend
     npm install -D vue-router
     ```
 
-【vue動作確認】
-1. Run
+【Verify Vue】
+1. Please run
     ```
     npm run watch
     ```
-【テスト表示は http://localhost:（ポート番号）/#/　or /login　から確認可能】
+
+【Try to access `http://localhost:$port/#/`　or `/login`　to verify your local environment】
 1. Access to the localhost
 1. If you can access to the `/` and `/login`, your setup is finished.
 
