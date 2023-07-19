@@ -1,20 +1,20 @@
-# DevPla2.0(2021年12月23日　更新)
+# DevPla2.0(updated 23/12/2021)
 
 This app is a Platform where people can gather web developers for their developments.
-We call it as Devpla2.0 and this is an updated version of `Devpla` where Laravel is used for Frontend and Backend.
+We call it as Devpla2.0 and this is an updated version of [Devpla](https://github.com/tinaba96/DevPla/tree/devpla) where Laravel is used for Frontend and Backend.
 Devpla2.0 has been developed by using Vue.js for Fronend and Laravel for Backend.
 
 ## Instructions
 
-【git　からソースコードをcloneする】
+【clone source from github】
 1. Clone this repository
     ```
     git clone https://github.com/tinaba96/devpla2.0.git
     ```
 
 
-【docker 起動するための準備を行う】
-1. Set your own `.env` file （dockerの.enファイルに環境変数を入れる）
+【prepare the docker for staring】
+1. Set your own `.env` file (put environment variables in .env file)
 
 1. Build the images
     ```
@@ -26,7 +26,7 @@ Devpla2.0 has been developed by using Vue.js for Fronend and Laravel for Backend
     docker compose up -d
     ```
 
-【パッケージインストール】
+【Install packages】
 1. Login to Docker
     ```
     docker compose exec app bash
@@ -34,10 +34,12 @@ Devpla2.0 has been developed by using Vue.js for Fronend and Laravel for Backend
 
     - Install Laravel, if needed
 
-1. composer をインストールする（追記）
+1. install composer
     
-    コマンド：composer install
-    参考URL http://vdeep.net/laravel-git-clone
+    ```
+    composer install
+    ```
+    [Reference](http://vdeep.net/laravel-git-clone)
 
 【動作確認時、ローカルサーバーにアクセスしたが　Http500が表示されたときの対応】
 1. laravelプロジェクト配下に.envが無い場合、以下のコマンドで.envファイル作成
